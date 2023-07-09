@@ -1,0 +1,177 @@
+.contentBlock {
+    color: white;
+    padding: 0 calc(10.6vw - 16px);
+    padding-bottom: calc(11vw + 19px);
+    padding-top: calc(5vw + 10px);
+}
+
+.none {
+    display: none;
+}
+h2 {
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 100%;
+    margin: 0;
+}
+
+/* Button */
+@import url(https://fonts.googleapis.com/css?family=Montserrat:700);
+.button {
+	margin: 0;
+	padding: 0;
+	border: 0px none;
+}
+
+button{
+  width: 100%;
+  background-color: #333;  
+  font: 10 1em/1em 'Montserrat';
+}
+
+.button{
+	display: inline-block;
+	overflow: hidden;
+	background-color: transparent;
+     -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(50%, transparent), to(rgba(255,255,255,0.3)));
+  
+}
+.button span{
+	display: block;
+	position: relative;
+	transition:0.3s ease-in-out all;
+	transform-origin:50% 0;
+    transform-style:preserve-3d;
+	background-color: black;
+	color: white;
+    width: 100%;  
+    padding: 0.3em 0;
+    text-align: center;
+    height: 1.2em;
+}
+.button span:after{
+	display: block;
+	content: attr(data-title);
+	transition:0.3s ease-in-out all;
+	transform-origin:50% 0;
+	transform:translate3d(0px,105%,0px) rotateX(-90deg);
+	background-color: white;
+	color: black;
+    width: 100%;
+    padding: 0.3em;
+    text-align: center;
+}
+
+.button:hover span{
+	transform:translate3d(0px,0px,-30px) rotateX(90deg);
+}
+/* Registration */
+.formRegistration {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    gap: 0.4rem;
+}
+.continueBtn {
+    display: flex;
+    gap: 4em;
+}
+.enterWithIcons {
+    display: flex;
+    justify-content:flex-end;
+    gap: 0.5em;
+    align-items: center;
+}
+.enterWithIcons img{
+    width: 2em;
+}
+
+/* userPage */
+.userProfile {
+    display: flex;
+    flex-direction: column;
+    font-size: 2em;
+    width: 20%;
+}
+.userProfile .getHome {
+    width: 1.5em;
+}
+.getHome {
+    width: 2.5em;
+    margin-bottom: 1em;
+}
+.userName {
+    display: flex;
+    align-items: center;
+}
+.userList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.userList img {
+    width: 1em;
+    margin-right: 0.3em;
+}
+.userProfile .button span{
+    height: 1em;
+    font-size: 0.8em;
+    border-radius: 3px;
+}
+.userProfile .button{
+    margin-top: 1em;
+    
+}
+
+/* friends List */
+
+.friends {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    width: 20%;
+}
+.friend img {
+    width: 1em;
+    
+}
+.friend {
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
+    
+}
+.friend:hover {
+    transform-origin: left top;
+    margin-top: -10px;
+    margin-left: 20px;
+    transition: margin-left 130ms;
+    transition: margin-top 130ms;
+    box-shadow: 0 10px 90px rgba(0, 0, 0, 0.4);
+}
+
+/* chat */
+.chatWindow {
+    width: 20em;
+    height: 20em;
+    border: 1px solid white;
+}
+.chatWindow {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.textInput input:active, input:hover, input:focus {
+    outline: 0;
+    outline-offset: 0;
+}
+.textInput input {
+    background: none;
+    color: white;
+    width: 98%;
+    height: 2em;
+    border: none;
+    border-top: 1px solid white;
+}

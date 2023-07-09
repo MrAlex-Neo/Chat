@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        .pa{position:absolute;top:0;right:0;bottom:0;left:0}
+        .z0{z-index:0}
+    </style>
+</head>
+<body>
+    <div class="pa z0 your-element-selector">
+        <div class="contentBlock" id="mainBoxForDiv">
+            <div class="authorization none box" id="authorizationDiv">
+                <form class="formRegistration" action="#">
+                    <h2>Entering the Сhat</h2>
+                    <input type="text" placeholder="Enter your email">
+                    <input type="text" placeholder="Enter your password">
+                    <div class="continueBtn">
+                        <button class="button">
+                            <span data-title="OH YEAH!">Login</span>
+                        </button>
+                        <button class="button">
+                            <span data-title="Get ready!" id="registration">Registration</span> 
+                        </button>
+                    </div>
+                    <div class="enterWithIcons">
+                        <span>Войти с помощью: </span>
+                        <div><img src="./img/google.svg" alt=""></div>
+                        <div><img src="./img/discord.svg" alt=""></div>
+                        <div><img src="./img/facebook.svg" alt=""></div>
+                    </div>
+                </form>
+            </div>
+            <div class="registration none box" id="registrationDiv">
+                <form class="formRegistration" action="#">
+                    <h2>Registration</h2>
+                    <input type="text" placeholder="Enter your email">
+                    <input type="text" placeholder="Enter your password">
+                    <input type="text" placeholder="Enter your password">
+                    <button class="button">
+                        <span data-title="Get ready!">Registration</span> 
+                    </button>
+                    <div class="enterWithIcons">
+                        <span>Войти с помощью: </span>
+                        <div><img src="./img/google.svg" alt=""></div>
+                        <div><img src="./img/discord.svg" alt=""></div>
+                        <div><img src="./img/facebook.svg" alt=""></div>
+                    </div>
+                </form>
+            </div>
+            <div class="userPerson box" id="userPersonDiv">
+                <div class="userProfile">
+                    <div class="getUserProfile"><img src="./img/profile-svgrepo-com.svg" class="getHome" alt=""></div>
+                    <div class="userList">
+                        <div class="userName">
+                            <img src="./img/user.svg" alt="">
+                            <span >Boris</span>
+                        </div>
+                        <span>age: <span class="userAge">70</span></span>
+                        <button class="button">
+                            <span id="friendsListBtn" data-title="Check list...">Friends</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="friendsList none box" id="friendsBox">
+                <div class="getUserProfile"><img src="./img/profile-svgrepo-com.svg" class="getHome" alt=""></div>
+                <div class="friends" id="friendsList">
+                    <div class="friend">
+                        <img src="./img/user.svg" alt="">
+                        <span>Nurbek</span>
+                    </div>
+                    <div class="friend">
+                        <img src="./img/user.svg" alt="">
+                        <span>Urbek</span>
+                    </div>
+                    <div class="friend">
+                        <img src="./img/user.svg" alt="">
+                        <span>Rbek</span>
+                    </div>
+                    <div class="friend">
+                        <img src="./img/user.svg" alt="">
+                        <span>Bek</span>
+                    </div>
+                </div>
+            </div>
+            <div class="chat none box" id="chatBox">
+                <div class="getUserProfile"><img src="./img/profile-svgrepo-com.svg" class="getHome" alt=""></div>
+                <div class="chatWindow">
+                    <div class="textInput">
+                        <input type="text" placeholder="Напишите что нибудь!(пожалуйста, ёпт)">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="./js/three.r92.min.js"></script>
+    <script src="./js/vanta.waves.min.js"></script>  
+    <script src="./js/script.js"></script>
+</body>
+</html>
