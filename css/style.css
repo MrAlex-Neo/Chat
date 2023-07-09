@@ -130,8 +130,8 @@ button{
 .friends {
     display: flex;
     flex-direction: column;
-    gap: 1em;
-    width: 10em;
+    gap: 2em;
+    width: 20em;
 }
 .friend img {
     width: 1em;
