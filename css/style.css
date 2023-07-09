@@ -178,3 +178,9 @@ button{
     border: none;
     border-top: 1px solid white;
 }
+.textInput img{
+    width: 1.2em;
+    position: relative;
+    left: 92%;
+    top: 55%;
+}
