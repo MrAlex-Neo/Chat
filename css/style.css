@@ -131,7 +131,7 @@ button{
     display: flex;
     flex-direction: column;
     gap: 1em;
-    width: 20%;
+    width: 10em;
 }
 .friend img {
     width: 1em;
