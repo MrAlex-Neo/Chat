@@ -71,8 +71,11 @@ button{
     padding: 0;
     display: flex;
     flex-direction: column;
-    width: 40%;
+    width: calc(13vw + 251px);
     gap: 0.4rem;
+}
+.formRegistration h2{
+    margin-bottom: 1em;
 }
 .continueBtn {
     display: flex;
@@ -87,6 +90,13 @@ button{
 .enterWithIcons img{
     width: 2em;
 }
+.formRegistration input{
+    margin-bottom: 1em;
+    height: 3em;
+    padding-left: 1em;
+}
+
+
 
 /* userPage */
 .userProfile {
