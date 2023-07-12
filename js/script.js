@@ -36,7 +36,7 @@ getHome.forEach (btn => {
 friendsList.forEach (btn => {
     btn.addEventListener('click', function () {
         let elem = event.target
-        userForChat.innerText = elem.innerHTML
+        userForChat.innerHTML = elem.innerText
         friendsWindow.classList.add('none')
         chatWindow.classList.remove('none')
     })
