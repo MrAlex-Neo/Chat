@@ -156,9 +156,10 @@ button{
 
 /* chat */
 .chatWindow {
-    width: 20em;
+    width: auto;
     height: 20em;
     border: 1px solid white;
+    font-size: 20px;
 }
 .chatWindow {
     display: flex;
@@ -171,16 +172,62 @@ button{
     outline-offset: 0;
 }
 .textInput input {
+    /* display: inline-flex;
+    flex-wrap: nowrap; */
     background: none;
     color: white;
     width: 98%;
-    height: 2em;
+    height: 3em;
     border: none;
     border-top: 1px solid white;
+    padding-left: 1em;
+
+    /* min-height: 3em;
+    max-height: 10em; */
 }
 .textInput img{
-    width: 1.2em;
+    width: 1.3em;
     position: relative;
-    left: 92%;
+    left: 95%;
     top: 55%;
+    cursor: pointer;
+}
+
+.chatHead {
+    display: flex;
+    justify-content: space-between;
+}
+.anotherUserForChat {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid white;
+    border-left: 1px solid white;
+    margin-bottom: 1em;
+    padding-left: 1em;
+}
+
+.messagesChat {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.messagesChat span{
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border: 1px solid white;
+    width: auto;
+    max-width: 10em;
+}
+
+.user {
+    margin-left: auto;
+    margin-right: 0.5em;
+    border-radius: 0.5em 0.5em 0.5em 0;
+}
+
+.companion {
+    margin-right: auto;
+    margin-left: 0.5em;
+    border-radius: 0.5em 0.5em 0 0.5em;
+    
 }

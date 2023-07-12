@@ -12,6 +12,8 @@ const registrationWindow = document.getElementById('registrationDiv')
 const userWindow = document.getElementById('userPersonDiv')
 const friendsWindow = document.getElementById('friendsBox')
 const chatWindow = document.getElementById('chatBox')
+const inputChat = document.getElementById('inputChat')
+const userForChat = document.getElementById('anotherUserForChat')
 
 const registrationBtn = document.getElementById('registration')
 const getHome = document.querySelectorAll('.getUserProfile')
@@ -33,13 +35,21 @@ getHome.forEach (btn => {
 })
 friendsList.forEach (btn => {
     btn.addEventListener('click', function () {
+        let elem = event.target
+        userForChat.innerHTML = elem.innerHTML
         friendsWindow.classList.add('none')
         chatWindow.classList.remove('none')
     })
 })
+// inputChat.addEventListener('input', autoresize);
 
 
 // functions
+// function autoresize() {
+//     let size = input.scrollHeight
+//     input.style.height = size + 'px';
+//     input.style.transition = "none";
+//   }
 function openProfile() {
     for (i = 0; i < windowsBox.length; i++){
         windowsBox[i].classList.add('none')
