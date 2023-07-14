@@ -13,14 +13,14 @@
 <body>
     <div class="pa z0 your-element-selector">
         <div class="contentBlock" id="mainBoxForDiv">
-            <div class="authorization none box" id="authorizationDiv">
+            <div class="authorization box" id="authorizationDiv">
                 <form class="formRegistration" action="#">
                     <h2>Entering the Сhat</h2>
-                    <input type="text" placeholder="Enter your email">
-                    <input type="text" placeholder="Enter your password">
+                    <input type="text" id="userEmailAutorization" placeholder="Enter your email">
+                    <input type="text" id="userPasswordAutorization" placeholder="Enter your password">
                     <div class="continueBtn">
                         <button class="button">
-                            <span data-title="OH YEAH!">Login</span>
+                            <span id="authorizationClick" data-title="OH YEAH!">Login</span>
                         </button>
                         <button class="button">
                             <span data-title="Get ready!" id="registration">Registration</span> 
@@ -53,7 +53,7 @@
                     </div>
                 </form>
             </div>
-            <div class="userPerson box" id="userPersonDiv">
+            <div class="userPerson none box" id="userPersonDiv">
                 <div class="userProfile ">
                     <div class="getUserProfile"><img src="./img/profile-svgrepo-com.svg" class="getHome" alt=""></div>
                     <div class="userList">

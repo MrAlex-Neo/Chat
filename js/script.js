@@ -5,7 +5,6 @@ VANTA.WAVES({
     waveSpeed: 0.65
 })
 
-
 const windowsBox = document.querySelectorAll('.contentBlock .box')
 const authorizationWindow = document.getElementById('authorizationDiv')
 const registrationWindow = document.getElementById('registrationDiv')
@@ -19,6 +18,26 @@ const registrationBtn = document.getElementById('registration')
 const getHome = document.querySelectorAll('.getUserProfile')
 const friendsBtn = document.getElementById('friendsListBtn')
 const friendsList = document.querySelectorAll('.friends .friend')
+const userEmailAutorization = document.getElementById('userEmailAutorization')
+const userPasswordAutorization = document.getElementById('userPasswordAutorization')
+document.getElementById('authorizationClick').addEventListener('click', authorizationCheckUser)
+
+
+// async function authorizationCheckUser() {
+//     username = document.getElementById("myinput").value
+//     // document.querySelector('.registration').classList.add('none')
+//     // отправить запрос на проверку пользователя
+//     await sendRequest('user', 'POST', {username})
+//     getUser(username)
+// }
+
+
+
+
+
+
+
+
 
 
 // litseners
@@ -60,5 +79,54 @@ function openProfile() {
     userWindow.classList.remove('none')
 }
 
+async function sendRequest(url, method, data) {
+    url = `https://tg-api.tehnikum.school/tehnikum_course/minesweeper/${url}`
+    
+    if(method == "POST") {
+        let response = await fetch(url, {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+    
+        response = await response.json()
+        return response
+    } else if(method == "GET") {
+        url = url+"?"+ new URLSearchParams(data)
+        let response = await fetch(url, {
+            method: "GET",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+        response = await response.json()
+        return response
+    }
+}
+
+// async function getUser(username) {
+//     let response = await sendRequest('user', 'GET', {
+//         username
+//     })
+//     // console.log(response)
+//     if (response) {
+//         // нет ошибки
+//         let userInfo = document.querySelector('header span')
+//         userInfo.innerHTML = `[${username}, ${response.balance}]`
+//         if (username != ''){
+//             document.querySelector('.registration').classList.remove('flex')
+//             document.querySelector('.registration').classList.add('none') 
+//         }
+//     } else {
+//         // есть ошибка
+//         alert(response.message)
+        
+        
+//     }
+// }
 
 
