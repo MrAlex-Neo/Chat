@@ -80,7 +80,7 @@ function openProfile() {
 }
 
 async function sendRequest(url, method, data) {
-    url = `https://tg-api.tehnikum.school/tehnikum_course/minesweeper/${url}`
+    url = `/* тут должна быть ссылка */${url}`
     
     if(method == "POST") {
         let response = await fetch(url, {
@@ -115,11 +115,11 @@ async function sendRequest(url, method, data) {
 //     // console.log(response)
 //     if (response) {
 //         // нет ошибки
-//         let userInfo = document.querySelector('header span')
-//         userInfo.innerHTML = `[${username}, ${response.balance}]`
+//         let userInfo = document.querySelector('')
+//         userInfo.innerHTML = `[${}]`
 //         if (username != ''){
-//             document.querySelector('.registration').classList.remove('flex')
-//             document.querySelector('.registration').classList.add('none') 
+//             document.querySelector('.registration').classList.remove('')
+//             document.querySelector('.registration').classList.add('') 
 //         }
 //     } else {
 //         // есть ошибка
