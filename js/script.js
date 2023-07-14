@@ -80,7 +80,7 @@ function openProfile() {
 }
 
 async function sendRequest(url, method, data) {
-    url = `/* тут должна быть ссылка */${url}`
+    url = `http://nurbek.lol:8000/api/${url}`
     
     if(method == "POST") {
         let response = await fetch(url, {
