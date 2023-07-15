@@ -161,26 +161,26 @@ async function getUser(username) {
     }
 }
 
-async function getUser(username) {
-    let response = await sendRequest('auth', 'GET', {
-        username
-    })
-    // console.log(response)
-    if (response) {
-        // нет ошибки
-        let userInfo = document.getElementById('userName')
-        userInfo.innerHTML = `${response.id}`
-        openProfile()
+// async function getUser(username) {
+//     let response = await sendRequest('auth', 'GET', {
+//         username
+//     })
+//     // console.log(response)
+//     if (response) {
+//         // нет ошибки
+//         let userInfo = document.getElementById('userName')
+//         userInfo.innerHTML = `${response.id}`
+//         openProfile()
 
-        // if (username != ''){
-        // }
-    } else {
-        // есть ошибка
-        alert('Такого пользователя не судествует!')
+//         // if (username != ''){
+//         // }
+//     } else {
+//         // есть ошибка
+//         alert('Такого пользователя не судествует!')
         
         
-    }
-}
+//     }
+// }
 
 
 
