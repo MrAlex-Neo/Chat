@@ -26,8 +26,6 @@ const userFirstNameRegistration = document.getElementById('userFirstNameRegistra
 const userEmailRegistration = document.getElementById('userEmailRegistration')
 const userPasswordRegistration = document.getElementById('userPasswordRegistration')
 
-document.getElementById('authorizationClick').addEventListener('click', authorizationCheckUser)
-document.getElementById('registrationClick').addEventListener('click', registrationCheckUser)
 
 
 
@@ -50,6 +48,10 @@ document.getElementById('registrationClick').addEventListener('click', registrat
 
 
 // litseners
+
+document.getElementById('authorizationClick').addEventListener('click', authorizationCheckUser)
+document.getElementById('registrationClick').addEventListener('click', registrationCheckUser)
+
 friendsBtn.onclick = function () {
     userWindow.classList.add('none')
     friendsWindow.classList.remove('none')
