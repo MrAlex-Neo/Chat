@@ -18,9 +18,18 @@ const registrationBtn = document.getElementById('registration')
 const getHome = document.querySelectorAll('.getUserProfile')
 const friendsBtn = document.getElementById('friendsListBtn')
 const friendsList = document.querySelectorAll('.friends .friend')
+
 const userEmailAutorization = document.getElementById('userEmailAutorization')
 const userPasswordAutorization = document.getElementById('userPasswordAutorization')
+
+const userFirstNameRegistration = document.getElementById('userFirstNameRegistration')
+const userEmailRegistration = document.getElementById('userEmailRegistration')
+const userPasswordRegistration = document.getElementById('userPasswordRegistration')
+
 document.getElementById('authorizationClick').addEventListener('click', authorizationCheckUser)
+document.getElementById('registrationClick').addEventListener('click', registrationCheckUser)
+
+
 
 
 // async function authorizationCheckUser() {
@@ -78,7 +87,6 @@ function openProfile() {
     }
     userWindow.classList.remove('none')
 }
-
 async function sendRequest(url, method, data) {
     url = `http://nurbek.lol:8000/api/${url}`
     
@@ -107,26 +115,49 @@ async function sendRequest(url, method, data) {
         return response
     }
 }
+function authorizationCheckUser() {
+    let userInfo = {
+        email: userEmailAutorization.value,
+        password: userPasswordAutorization.value
+    }
+    getUser(userInfo)
+}
+function registrationCheckUser() {
+    let userInfo = {
+        "first_name": userFirstNameRegistration.value,
+        "email": userEmailRegistration.value,
+        "password": userPasswordRegistration.value
+    }
+    regUser(userInfo)
+}
+async function regUser(userInfo) {
+    // setCookie('username', username)
+    // document.querySelector('.registration').classList.add('none')
+    // отправить запрос на регистрацию пользователя
+    await sendRequest('user', 'POST', {userInfo})
+    getUser(userInfo) //???
+}
 
-// async function getUser(username) {
-//     let response = await sendRequest('user', 'GET', {
-//         username
-//     })
-//     // console.log(response)
-//     if (response) {
-//         // нет ошибки
-//         let userInfo = document.querySelector('')
-//         userInfo.innerHTML = `[${}]`
-//         if (username != ''){
-//             document.querySelector('.registration').classList.remove('')
-//             document.querySelector('.registration').classList.add('') 
-//         }
-//     } else {
-//         // есть ошибка
-//         alert(response.message)
+async function getUser(username) {
+    let response = await sendRequest('auth', 'GET', {
+        username
+    })
+    // console.log(response)
+    if (response) {
+        // нет ошибки
+        let userInfo = document.getElementById('userName')
+        userInfo.innerHTML = `${response.id}`
+        openProfile()
+
+        // if (username != ''){
+        // }
+    } else {
+        // есть ошибка
+        alert('Такого пользователя не судествует!')
         
         
-//     }
-// }
+    }
+}
+
 
 

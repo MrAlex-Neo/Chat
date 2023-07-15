@@ -37,13 +37,13 @@
             <div class="registration none box" id="registrationDiv">
                 <form class="formRegistration" action="#">
                     <h2>Registration</h2>
-                    <input type="text" placeholder="Enter your nickname">
+                    <input type="text" placeholder="Enter your nickname" id="userFirstNameRegistration">
                     <input type="text" placeholder="Enter your age">
-                    <input type="text" placeholder="Enter your email">
-                    <input type="text" placeholder="Enter your password">
-                    <input type="text" placeholder="Enter your password">
+                    <input type="text" placeholder="Enter your email" id="userEmailRegistration">
+                    <input type="text" placeholder="Enter your password" id="userPasswordRegistration">
+                    <input type="text" placeholder="Enter your password" id="userPasswordRegistrationCopy">
                     <button class="button">
-                        <span data-title="Get ready!">Registration</span> 
+                        <span data-title="Get ready!" id="registrationClick">Registration</span> 
                     </button>
                     <div class="enterWithIcons">
                         <span>Войти с помощью: </span>
@@ -59,7 +59,7 @@
                     <div class="userList">
                         <div class="userName">
                             <img src="./img/user.svg" alt="">
-                            <span >Boris</span>
+                            <span id="userName">Boris</span>
                         </div>
                         <span>age: <span class="userAge">70</span></span>
                         <button class="button">
