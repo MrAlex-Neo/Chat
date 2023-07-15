@@ -151,6 +151,27 @@ async function getUser(username) {
         userInfo.innerHTML = `${response.id}`
         openProfile()
 
+        // if (){
+        // }
+    } else {
+        // есть ошибка
+        alert('Такого пользователя не судествует!')
+        
+        
+    }
+}
+
+async function getUser(username) {
+    let response = await sendRequest('auth', 'GET', {
+        username
+    })
+    // console.log(response)
+    if (response) {
+        // нет ошибки
+        let userInfo = document.getElementById('userName')
+        userInfo.innerHTML = `${response.id}`
+        openProfile()
+
         // if (username != ''){
         // }
     } else {
