@@ -130,14 +130,22 @@ function registrationCheckUser() {
 		email: userEmailRegistration.value,
 		password: userPasswordRegistration.value,
 	};
+    console.log(userInfo)
 	regUser(userInfo);
 }
 async function regUser(userInfo) {
 	// setCookie('username', username)
 	// document.querySelector('.registration').classList.add('none')
 	// отправить запрос на регистрацию пользователя
-	await sendRequest("user", "POST", { userInfo });
-	getUser(userInfo); //???
+	let response = await sendRequest("register", "POST", userInfo);
+    if (response){
+        registrationWindow.add('none')
+        authorizationWindow.remove('none')
+    }else {
+        alert('Ошибка, бро!')
+    }
+	// getUser(userInfo); //???
+    console.log(response);
 }
 
 async function getUser(username) {
