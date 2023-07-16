@@ -17,7 +17,7 @@ const userForChat = document.getElementById("anotherUserForChat");
 const registrationBtn = document.getElementById("registration");
 const getHome = document.querySelectorAll(".getUserProfile");
 const friendsBtn = document.getElementById("friendsListBtn");
-const friendsList = document.querySelectorAll(".friends .friend");
+const friendsList = document.getElementById("friendsList");
 
 const userEmailAutorization = document.getElementById("userEmailAutorization");
 const userPasswordAutorization = document.getElementById(
@@ -154,15 +154,28 @@ async function regUser(userInfo) {
 async function getUser(username) {
 	// let response = await sendRequest(`auth/?email=${username.email}&password=${username.password}`, 'GET')
 	let response = await sendRequest("auth", "GET", username);
-    let personInfo = await sendRequest("user/", "GET", response.id);
-	console.log(response);
+    let personInfo = await sendRequest("user/", "GET", {'id': response.id});
+    let peopleAll = await sendRequest("user/", "GET", {'id': 'all'});
+    for(let i = 0; i < peopleAll.length; i++) {
+        friendsList.insertAdjacentHTML("beforeend", friendId (peopleAll[i].first_name, peopleAll[i].id))
+        console.log(peopleAll[i].first_name, peopleAll[i].id)
+    }
+    // peopleAll.map((pers) => {
+    //     let friendElement = document.createElement('div')
+    //     console.log(friendElement);
+    //     friendElement.textContent = pers.first_name
+    //     document.getElementById('friendsList').innerHTML += pers.first_name
+    //     console.log(pers)
+    // })
+    // console.log(peopleAll)
+	// console.log(response);
 
 	if (personInfo) {
 		// нет ошибки
-		let personName = document.getElementById("userName");
-        let personAge = document.getElementById("userAge");
-		personName.innerHTML = `${personInfo.first_name}`;
-        personAge.innerHTML = `${personInfo.age}`;
+		document.getElementById("userName").innerHTML = `${personInfo.first_name}`
+        // let personAge = document.getElementById("userAge");
+		// personName.innerHTML = `${personInfo.first_name}`;
+        // personAge.innerHTML = `${personInfo.age}`;
 		openProfile();
 
 		// if (){
@@ -172,7 +185,14 @@ async function getUser(username) {
 		alert("Такого пользователя не судествует!");
 	}
 }
-
+function friendId (nameFriend, id) {
+    console.log(nameFriend, id)
+    return `
+    <div class="friend">
+        <img src="./img/user.svg" alt="" />
+        <span data-index="${id}">${nameFriend}</span>
+    </div>`
+}
 // async function getUser(username) {
 //     let response = await sendRequest('auth', 'GET', {
 //         username
