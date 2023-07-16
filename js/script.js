@@ -108,7 +108,6 @@ async function sendRequest(url, method, data) {
 			headers: {
 				Accept: "application/json",
 				"Content-Type": "application/json",
-                referrerPolicy: "unsafe_url"
 			},
 		});
 		response = await response.json();
@@ -116,15 +115,14 @@ async function sendRequest(url, method, data) {
 	}
 }
 function authorizationCheckUser() {
-    // let userInfo = new Object
-    // userEmailAutorization.value == ' ' ? userEmailAutorization.style.border = '1px solid red': userPasswordAutorization.value == ' ' ? userEmailAutorization.style.border = '1px solid red' : userInfo = {email: userEmailAutorization.value, password: userPasswordAutorization.value}
+	// let userInfo = new Object
+	// userEmailAutorization.value == ' ' ? userEmailAutorization.style.border = '1px solid red': userPasswordAutorization.value == ' ' ? userEmailAutorization.style.border = '1px solid red' : userInfo = {email: userEmailAutorization.value, password: userPasswordAutorization.value}
 
-    
-    let userInfo = {
-        email: userEmailAutorization.value,
-        password: userPasswordAutorization.value
-    }
-    getUser(userInfo)
+	let userInfo = {
+		email: userEmailAutorization.value,
+		password: userPasswordAutorization.value,
+	};
+	getUser(userInfo);
 }
 function registrationCheckUser() {
 	let userInfo = {
@@ -143,7 +141,7 @@ async function regUser(userInfo) {
 }
 
 async function getUser(username) {
-    // let response = await sendRequest(`auth/?email=${username.email}&password=${username.password}`, 'GET')
+	// let response = await sendRequest(`auth/?email=${username.email}&password=${username.password}`, 'GET')
 	let response = await sendRequest("auth", "GET", username);
 	console.log(response);
 
