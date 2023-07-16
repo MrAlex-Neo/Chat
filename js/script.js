@@ -1,7 +1,7 @@
 VANTA.WAVES({
 	el: ".your-element-selector",
 	color: 0x40404,
-	waveHeight: 4.5,
+	waveHeight: 2.5,
 	waveSpeed: 0.65,
 });
 
@@ -14,40 +14,24 @@ const chatWindow = document.getElementById("chatBox");
 const inputChat = document.getElementById("inputChat");
 const userForChat = document.getElementById("anotherUserForChat");
 
+
 const registrationBtn = document.getElementById("registration");
 const getHome = document.querySelectorAll(".getUserProfile");
 const friendsBtn = document.getElementById("friendsListBtn");
 const friendsList = document.getElementById("friendsList");
+const friendsPerson = document.querySelectorAll(".friend");
+
 
 const userEmailAutorization = document.getElementById("userEmailAutorization");
-const userPasswordAutorization = document.getElementById(
-	"userPasswordAutorization"
-);
-
-const userFirstNameRegistration = document.getElementById(
-	"userFirstNameRegistration"
-);
+const userPasswordAutorization = document.getElementById("userPasswordAutorization");
+const userFirstNameRegistration = document.getElementById("userFirstNameRegistration");
 const userEmailRegistration = document.getElementById("userEmailRegistration");
-const userPasswordRegistration = document.getElementById(
-	"userPasswordRegistration"
-);
-
-// async function authorizationCheckUser() {
-//     username = document.getElementById("myinput").value
-//     // document.querySelector('.registration').classList.add('none')
-//     // отправить запрос на проверку пользователя
-//     await sendRequest('user', 'POST', {username})
-//     getUser(username)
-// }
+const userPasswordRegistration = document.getElementById("userPasswordRegistration");
 
 // litseners
 
-document
-	.getElementById("authorizationClick")
-	.addEventListener("click", authorizationCheckUser);
-document
-	.getElementById("registrationClick")
-	.addEventListener("click", registrationCheckUser);
+document.getElementById("authorizationClick").addEventListener("click", authorizationCheckUser);
+document.getElementById("registrationClick").addEventListener("click", registrationCheckUser);
 
 friendsBtn.onclick = function () {
 	userWindow.classList.add("none");
@@ -60,22 +44,21 @@ registrationBtn.onclick = function () {
 getHome.forEach((btn) => {
 	btn.addEventListener("click", openProfile);
 });
-friendsList.forEach((btn) => {
-	btn.addEventListener("click", function () {
-		let elem = event.target;
+// friendsPerson.forEach((btn) => {
+// 	btn.addEventListener("click", function () {
+// 		let elem = event.target;
+// 		userForChat.innerHTML = elem.innerText;
+// 		friendsWindow.classList.add("none");
+// 		chatWindow.classList.remove("none");
+// 	});
+// });
+
+function clickFriend () {
+	let elem = event.target;
 		userForChat.innerHTML = elem.innerText;
 		friendsWindow.classList.add("none");
 		chatWindow.classList.remove("none");
-	});
-});
-// inputChat.addEventListener('input', autoresize);
-
-// functions
-// function autoresize() {
-//     let size = input.scrollHeight
-//     input.style.height = size + 'px';
-//     input.style.transition = "none";
-//   }
+}
 function openProfile() {
 	for (i = 0; i < windowsBox.length; i++) {
 		windowsBox[i].classList.add("none");
@@ -132,23 +115,16 @@ function registrationCheckUser() {
 		email: userEmailRegistration.value,
 		password: userPasswordRegistration.value,
 	};
-    // console.log(userInfo)
 	regUser(userInfo);
 }
 async function regUser(userInfo) {
-	// setCookie('username', username)
-	// document.querySelector('.registration').classList.add('none')
-	// отправить запрос на регистрацию пользователя
 	let response = await sendRequest("register/", "POST", userInfo);
-    console.log(response)
-    if (response){
+    if (response !== ''){
         registrationWindow.classList.add('none')
         authorizationWindow.classList.remove('none')
     }else {
         alert('Ошибка, бро!')
     }
-	// getUser(userInfo); //???
-    console.log(response);
 }
 
 async function getUser(username) {
@@ -156,59 +132,25 @@ async function getUser(username) {
 	let response = await sendRequest("auth", "GET", username);
     let personInfo = await sendRequest("user/", "GET", {'id': response.id});
     let peopleAll = await sendRequest("user/", "GET", {'id': 'all'});
-    for(let i = 0; i < peopleAll.length; i++) {
-        friendsList.insertAdjacentHTML("beforeend", friendId (peopleAll[i].first_name, peopleAll[i].id))
-        console.log(peopleAll[i].first_name, peopleAll[i].id)
-    }
-    // peopleAll.map((pers) => {
-    //     let friendElement = document.createElement('div')
-    //     console.log(friendElement);
-    //     friendElement.textContent = pers.first_name
-    //     document.getElementById('friendsList').innerHTML += pers.first_name
-    //     console.log(pers)
-    // })
-    // console.log(peopleAll)
-	// console.log(response);
-
+	peopleAll.map((pers) => {
+		friendsList.insertAdjacentHTML("beforeend", friendId (pers.first_name, pers.id))
+	})
+	// console.log(typeof friendsList)
 	if (personInfo) {
 		// нет ошибки
 		document.getElementById("userName").innerHTML = `${personInfo.first_name}`
-        // let personAge = document.getElementById("userAge");
-		// personName.innerHTML = `${personInfo.first_name}`;
-        // personAge.innerHTML = `${personInfo.age}`;
 		openProfile();
 
-		// if (){
-		// }
 	} else {
 		// есть ошибка
 		alert("Такого пользователя не судествует!");
 	}
 }
 function friendId (nameFriend, id) {
-    console.log(nameFriend, id)
     return `
     <div class="friend">
         <img src="./img/user.svg" alt="" />
         <span data-index="${id}">${nameFriend}</span>
     </div>`
 }
-// async function getUser(username) {
-//     let response = await sendRequest('auth', 'GET', {
-//         username
-//     })
-//     // console.log(response)
-//     if (response) {
-//         // нет ошибки
-//         let userInfo = document.getElementById('userName')
-//         userInfo.innerHTML = `${response.id}`
-//         openProfile()
 
-//         // if (username != ''){
-//         // }
-//     } else {
-//         // есть ошибка
-//         alert('Такого пользователя не судествует!')
-
-//     }
-// }
