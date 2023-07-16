@@ -140,9 +140,9 @@ async function regUser(userInfo) {
 }
 
 async function getUser(username) {
-	console.log(response);
-	// let response = await sendRequest(`auth/?email=${username.email}&password=${username.password}`, 'GET')
+    // let response = await sendRequest(`auth/?email=${username.email}&password=${username.password}`, 'GET')
 	let response = await sendRequest("auth", "GET", username);
+	// console.log(response);
 
 	if (response) {
 		// нет ошибки
