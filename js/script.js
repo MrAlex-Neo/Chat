@@ -90,6 +90,7 @@ async function sendRequest(url, method, data) {
 	url = `https://nurbek.lol/api/${url}`;
 
 	if (method == "POST") {
+        console.log(data);
 		let response = await fetch(url, {
 			method: "POST",
 			headers: {
@@ -100,6 +101,7 @@ async function sendRequest(url, method, data) {
 		});
 
 		response = await response.json();
+        console.log(response)
 		return response;
 	} else if (method == "GET") {
 		url = url + "?" + new URLSearchParams(data);
@@ -130,17 +132,18 @@ function registrationCheckUser() {
 		email: userEmailRegistration.value,
 		password: userPasswordRegistration.value,
 	};
-    console.log(userInfo)
+    // console.log(userInfo)
 	regUser(userInfo);
 }
 async function regUser(userInfo) {
 	// setCookie('username', username)
 	// document.querySelector('.registration').classList.add('none')
 	// отправить запрос на регистрацию пользователя
-	let response = await sendRequest("register", "POST", userInfo);
+	let response = await sendRequest("register/", "POST", userInfo);
+    console.log(response)
     if (response){
-        registrationWindow.add('none')
-        authorizationWindow.remove('none')
+        registrationWindow.classList.add('none')
+        authorizationWindow.classList.remove('none')
     }else {
         alert('Ошибка, бро!')
     }
@@ -151,12 +154,15 @@ async function regUser(userInfo) {
 async function getUser(username) {
 	// let response = await sendRequest(`auth/?email=${username.email}&password=${username.password}`, 'GET')
 	let response = await sendRequest("auth", "GET", username);
+    let personInfo = await sendRequest("user/", "GET", response.id);
 	console.log(response);
 
-	if (response) {
+	if (personInfo) {
 		// нет ошибки
-		let userInfo = document.getElementById("userName");
-		userInfo.innerHTML = `${response.id}`;
+		let personName = document.getElementById("userName");
+        let personAge = document.getElementById("userAge");
+		personName.innerHTML = `${personInfo.first_name}`;
+        personAge.innerHTML = `${personInfo.age}`;
 		openProfile();
 
 		// if (){
