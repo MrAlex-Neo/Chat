@@ -116,8 +116,10 @@ async function sendRequest(url, method, data) {
 	}
 }
 function authorizationCheckUser() {
-    // userEmailAutorization.value == ' ' ? 
+    // let userInfo = new Object
+    // userEmailAutorization.value == ' ' ? userEmailAutorization.style.border = '1px solid red': userPasswordAutorization.value == ' ' ? userEmailAutorization.style.border = '1px solid red' : userInfo = {email: userEmailAutorization.value, password: userPasswordAutorization.value}
 
+    
     let userInfo = {
         email: userEmailAutorization.value,
         password: userPasswordAutorization.value
