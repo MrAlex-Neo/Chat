@@ -85,9 +85,9 @@ function openProfile() {
 	}
 	userWindow.classList.remove("none");
 }
-async function sendRequest(url, method, data, e) {
-	e.preventDefault();
-	url = `http://nurbek.lol:8000/api/${url}`;
+async function sendRequest(url, method, data) {
+	// e.preventDefault();
+	url = `https://nurbek.lol/api/${url}`;
 
 	if (method == "POST") {
 		let response = await fetch(url, {
@@ -108,6 +108,7 @@ async function sendRequest(url, method, data, e) {
 			headers: {
 				Accept: "application/json",
 				"Content-Type": "application/json",
+                referrerPolicy: "unsafe_url"
 			},
 		});
 		response = await response.json();
@@ -115,7 +116,7 @@ async function sendRequest(url, method, data, e) {
 	}
 }
 function authorizationCheckUser() {
-    
+    // userEmailAutorization.value == ' ' ? 
 
     let userInfo = {
         email: userEmailAutorization.value,
@@ -142,7 +143,7 @@ async function regUser(userInfo) {
 async function getUser(username) {
     // let response = await sendRequest(`auth/?email=${username.email}&password=${username.password}`, 'GET')
 	let response = await sendRequest("auth", "GET", username);
-	// console.log(response);
+	console.log(response);
 
 	if (response) {
 		// нет ошибки
