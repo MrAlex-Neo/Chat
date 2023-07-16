@@ -89,7 +89,8 @@ function openProfile() {
     }
     userWindow.classList.remove('none')
 }
-async function sendRequest(url, method, data) {
+async function sendRequest(url, method, data, e) {
+    e.preventDefault()
     url = `http://nurbek.lol:8000/api/${url}`
     
     if(method == "POST") {
@@ -118,6 +119,7 @@ async function sendRequest(url, method, data) {
     }
 }
 function authorizationCheckUser() {
+    // if (userEmailAutorization.value != )
     let userInfo = {
         email: userEmailAutorization.value,
         password: userPasswordAutorization.value
@@ -141,10 +143,10 @@ async function regUser(userInfo) {
 }
 
 async function getUser(username) {
-    let response = await sendRequest('auth', 'GET', {
-        username
-    })
-    // console.log(response)
+    console.log(response)
+    // let response = await sendRequest(`auth/?email=${username.email}&password=${username.password}`, 'GET')
+    let response = await sendRequest('auth', 'GET', username)
+
     if (response) {
         // нет ошибки
         let userInfo = document.getElementById('userName')
