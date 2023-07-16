@@ -120,6 +120,8 @@ async function sendRequest(url, method, data, e) {
 }
 function authorizationCheckUser() {
     // if (userEmailAutorization.value != )
+    userEmailAutorization.value != ' ' ? userEmailAutorization.style.color = 'red' : 
+
     let userInfo = {
         email: userEmailAutorization.value,
         password: userPasswordAutorization.value
