@@ -26,26 +26,30 @@
 		<div class="pa z0 your-element-selector">
 			<div class="contentBlock" id="mainBoxForDiv">
 				<div class="authorization box" id="authorizationDiv">
-					<div class="formRegistration" action="">
+					<form class="formRegistration aut-form" action="#">
 						<h2>Entering the Сhat</h2>
 						<input
-							type="text"
+							type="email"
 							id="userEmailAutorization"
-							placeholder="Enter your email" required
+							class="userEmailAutorization"
+							placeholder="Enter your email" 
+							name="email"
+							required
 						/>
 						<input
-							type="text"
+							type="password"
 							id="userPasswordAutorization"
-							placeholder="Enter your password" required
+							class="userPasswordAutorization"
+							placeholder="Enter your password"
+							name="password"
+							required
 						/>
 						<div class="continueBtn">
-							<button class="button">
+							<button class="button" type="submit">
 								<span id="authorizationClick" data-title="OH YEAH!">Login</span>
 							</button>
 							<button class="button">
-								<span data-title="Get ready!" id="registration"
-									>Registration</span
-								>
+								<span data-title="Get ready!" id="registration">Registration</span>
 							</button>
 						</div>
 						<div class="enterWithIcons">
@@ -54,10 +58,10 @@
 							<div><img src="./img/discord.svg" alt="" /></div>
 							<div><img src="./img/facebook.svg" alt="" /></div>
 						</div>
-					</div>
+					</form>
 				</div>
 				<div class="registration none box" id="registrationDiv">
-					<form class="formRegistration my-form" action="#">
+					<form class="formRegistration reg-form" action="#">
 						<h2>Registration</h2>
 						<input
 							type="text"
@@ -71,12 +75,15 @@
 						/>
 						<input type="number" 
 							placeholder="Enter your age" 
-							name="userAge"  
+							name="age"  
+							required
 						/>
 						<input
 							type="email"
 							placeholder="Enter your email"
 							id="userEmailRegistration"
+							name="email"
+							required
 						/>
 						<input
 							type="password"

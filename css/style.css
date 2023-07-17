@@ -4,7 +4,6 @@
     padding-bottom: calc(11vw + 19px);
     padding-top: calc(5vw + 10px);
 }
-
 .none {
     display: none;
 }
@@ -22,13 +21,11 @@ h2 {
 	padding: 0;
 	border: 0px none;
 }
-
 button{
   width: 100%;
   background-color: #333;  
   font: 10 1em/1em 'Montserrat';
 }
-
 .button{
 	display: inline-block;
 	overflow: hidden;
@@ -61,10 +58,10 @@ button{
     padding: 0.3em;
     text-align: center;
 }
-
 .button:hover span{
 	transform:translate3d(0px,0px,-30px) rotateX(90deg);
 }
+
 /* Registration */
 .formRegistration {
     margin: 0;
@@ -95,8 +92,6 @@ button{
     height: 3em;
     padding-left: 1em;
 }
-
-
 
 /* userPage */
 .userProfile {
@@ -132,11 +127,9 @@ button{
 }
 .userProfile .button{
     margin-top: 1em;
-    
 }
 
 /* friends List */
-
 .friends {
     display: flex;
     flex-direction: column;
@@ -188,8 +181,7 @@ button{
     outline-offset: 0;
 }
 .textInput input {
-    /* display: inline-flex;
-    flex-wrap: nowrap; */
+    flex-wrap: nowrap;
     background: none;
     color: white;
     width: 98%;
@@ -197,9 +189,6 @@ button{
     border: none;
     border-top: 1px solid white;
     padding-left: 1em;
-
-    /* min-height: 3em;
-    max-height: 10em; */
 }
 .textInput img{
     width: 1.3em;
@@ -221,7 +210,6 @@ button{
     margin-bottom: 1em;
     padding-left: 1em;
 }
-
 .messagesChat {
     display: flex;
     flex-direction: column;
@@ -234,18 +222,15 @@ button{
     width: auto;
     max-width: 10em;
 }
-
 .user {
     margin-left: auto;
     margin-right: 0.5em;
     border-radius: 0.5em 0.5em 0.5em 0;
 }
-
 .companion {
     margin-right: auto;
     margin-left: 0.5em;
     border-radius: 0.5em 0.5em 0 0.5em;
-    
 }
 
 

@@ -55,17 +55,21 @@ function isValidEmail(email) {
   	return EMAIL_REGEXP.test(email);
 }
 const EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
-function isEmailValid(value) {
+	function isEmailValid(value) {
  	return EMAIL_REGEXP.test(value);
 }
 
-const form = document.querySelector('.my-form');
-const loginInput = form.querySelector('.username');
-const passwordInput = form.querySelector('.password');
-const confirmPasswordInput = form.querySelector('.confirm-password');
+const formReg = document.querySelector('.reg-form');
+const loginInput = formReg.querySelector('.username');
+const passwordInput = formReg.querySelector('.password');
+const confirmPasswordInput = formReg.querySelector('.confirm-password');
 const email = document.getElementById('userEmailRegistration');
 
-form.addEventListener('submit', (evt) => {
+// const formAut = document.querySelector('.aut-form');
+// const loginAut = formAut.querySelector('.userEmailAutorization');
+// const passwordAut = formAut.querySelector('.userPasswordAutorization');
+
+formReg.addEventListener('submit', (evt) => {
 	// Отменяем действие по умолчанию
 	evt.preventDefault();
 	// Получаем значения полей формы
@@ -99,9 +103,18 @@ form.addEventListener('submit', (evt) => {
     return;
   }
   // Если всё в порядке, отправляем форму
-  form.submit();
+  formReg.submit();
 });
-
+// formAut.addEventListener('submit', (evt) => {
+// 	evt.preventDefault();
+// 	const password = passwordAut.value;
+// 	const login = loginAut.value;
+// 	if (!login || !password) {
+// 		alert('Пожалуйста, заполните все поля');
+// 		return;
+// 	  }
+// 	 formAut.submit();
+// 	});
 
 // listeners
 document.getElementById("authorizationClick").addEventListener("click", authorizationCheckUser);
@@ -131,6 +144,8 @@ backBtn.onclick = function () {
 // });
 
 
+
+
 //functions
 function clickFriend () {
 	let elem = event.target;
@@ -148,26 +163,13 @@ function openProfile() {
 	userWindow.classList.remove("none");
 }
 function authorizationCheckUser() {
-	if (userEmailAutorization.value === ''){
-		userEmailAutorization.style.border = '1px solid red'
-		console.log('Впишите Email!')
-	} else if (userPasswordAutorization.value === ''){
-		userPasswordAutorization.style.border = '1px solid red'
-	}else {
-		let userInfo = {
-			email: userEmailAutorization.value,
-			password: userPasswordAutorization.value,
-		};
-		getUser(userInfo);
-	}
-	
+	let userInfo = {
+		email: userEmailAutorization.value,
+		password: userPasswordAutorization.value,
+	};
+	getUser(userInfo);
 }
 function registrationCheckUser() {
-	if (condition) {
-		
-	} else {
-		
-	}
 	let userInfo = {
 		first_name: userFirstNameRegistration.value,
 		email: userEmailRegistration.value,
@@ -216,6 +218,7 @@ async function sendRequest(url, method, data) {
 }
 async function regUser(userInfo) {
 	let response = await sendRequest("register/", "POST", userInfo);
+	console.log(response)
     if (response !== ''){
         registrationWindow.classList.add('none')
         authorizationWindow.classList.remove('none')
@@ -232,14 +235,14 @@ async function getUser(username) {
 	peopleAll.map((pers) => {
 		friendsList.insertAdjacentHTML("beforeend", friendId (pers.first_name, pers.id))
 	})
-	if (personInfo) {
+	if (personInfo && response) {
 		// нет ошибки
 		document.getElementById("userName").innerHTML = `${personInfo.first_name}`
 		openProfile(friendsPerson);
 
 	} else {
 		// есть ошибка
-		alert("Такого пользователя не судествует!");
+		alert("Такого пользователя не существует!");
 	}
 }
 
