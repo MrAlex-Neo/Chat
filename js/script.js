@@ -5,6 +5,10 @@ VANTA.WAVES({
 	waveSpeed: 0.65,
 });
 
+function scrollToAction() {
+	document.querySelector('.friends').scrollTop = activeTop - 100;
+}
+
 const windowsBox = document.querySelectorAll(".contentBlock .box");
 const authorizationWindow = document.getElementById("authorizationDiv");
 const registrationWindow = document.getElementById("registrationDiv");
@@ -19,7 +23,7 @@ const registrationBtn = document.getElementById("registration");
 const getHome = document.querySelectorAll(".getUserProfile");
 const friendsBtn = document.getElementById("friendsListBtn");
 const friendsList = document.getElementById("friendsList");
-const friendsPerson = document.querySelectorAll(".friend");
+const friendsPerson = document.querySelectorAll(".friends .friend");
 
 
 const userEmailAutorization = document.getElementById("userEmailAutorization");
@@ -27,6 +31,8 @@ const userPasswordAutorization = document.getElementById("userPasswordAutorizati
 const userFirstNameRegistration = document.getElementById("userFirstNameRegistration");
 const userEmailRegistration = document.getElementById("userEmailRegistration");
 const userPasswordRegistration = document.getElementById("userPasswordRegistration");
+
+let personList = new Array
 
 // litseners
 
@@ -44,14 +50,16 @@ registrationBtn.onclick = function () {
 getHome.forEach((btn) => {
 	btn.addEventListener("click", openProfile);
 });
-// friendsPerson.forEach((btn) => {
-// 	btn.addEventListener("click", function () {
-// 		let elem = event.target;
-// 		userForChat.innerHTML = elem.innerText;
-// 		friendsWindow.classList.add("none");
-// 		chatWindow.classList.remove("none");
-// 	});
-// });
+
+friendsPerson.forEach((btn) => {
+	btn.addEventListener("click", function () {
+		let elem = event.target;
+		userForChat.innerHTML = elem.innerText;
+		friendsWindow.classList.add("none");
+		chatWindow.classList.remove("none");
+	});
+});
+
 
 function clickFriend () {
 	let elem = event.target;
@@ -84,7 +92,7 @@ async function sendRequest(url, method, data) {
 		});
 
 		response = await response.json();
-        console.log(response)
+        // console.log(response)
 		return response;
 	} else if (method == "GET") {
 		url = url + "?" + new URLSearchParams(data);
@@ -99,17 +107,28 @@ async function sendRequest(url, method, data) {
 		return response;
 	}
 }
-function authorizationCheckUser() {
-	// let userInfo = new Object
-	// userEmailAutorization.value == ' ' ? userEmailAutorization.style.border = '1px solid red': userPasswordAutorization.value == ' ' ? userEmailAutorization.style.border = '1px solid red' : userInfo = {email: userEmailAutorization.value, password: userPasswordAutorization.value}
 
-	let userInfo = {
-		email: userEmailAutorization.value,
-		password: userPasswordAutorization.value,
-	};
-	getUser(userInfo);
+function authorizationCheckUser() {
+	if (userEmailAutorization.value === ''){
+		userEmailAutorization.style.border = '1px solid red'
+		console.log('Впишите Email!')
+	} else if (userPasswordAutorization.value === ''){
+		userPasswordAutorization.style.border = '1px solid red'
+	}else {
+		let userInfo = {
+			email: userEmailAutorization.value,
+			password: userPasswordAutorization.value,
+		};
+		getUser(userInfo);
+	}
+	
 }
 function registrationCheckUser() {
+	if (condition) {
+		
+	} else {
+		
+	}
 	let userInfo = {
 		first_name: userFirstNameRegistration.value,
 		email: userEmailRegistration.value,
@@ -126,26 +145,39 @@ async function regUser(userInfo) {
         alert('Ошибка, бро!')
     }
 }
-
 async function getUser(username) {
-	// let response = await sendRequest(`auth/?email=${username.email}&password=${username.password}`, 'GET')
 	let response = await sendRequest("auth", "GET", username);
     let personInfo = await sendRequest("user/", "GET", {'id': response.id});
     let peopleAll = await sendRequest("user/", "GET", {'id': 'all'});
+	
+	// render()
 	peopleAll.map((pers) => {
 		friendsList.insertAdjacentHTML("beforeend", friendId (pers.first_name, pers.id))
 	})
-	// console.log(typeof friendsList)
+	// frendsListClickToChat(friendsList)
 	if (personInfo) {
 		// нет ошибки
 		document.getElementById("userName").innerHTML = `${personInfo.first_name}`
-		openProfile();
+		openProfile(friendsPerson);
 
 	} else {
 		// есть ошибка
 		alert("Такого пользователя не судествует!");
 	}
 }
+
+// function render() {
+//     friendsList.innerHTML = ''
+//     if (personList.length === 0) {
+//         friendsList.innerHTML = '<h5 class="text-light">Список пуст</h5>'
+//     }
+//     for(let i = 0; i < personList.length; i++) {
+//         friendsList.insertAdjacentHTML("beforeend", friendId (personList[i].first_name, personList.id))
+//         console.log(personList[i])
+//     }
+    
+// }
+
 function friendId (nameFriend, id) {
     return `
     <div class="friend">

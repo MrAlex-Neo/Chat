@@ -142,6 +142,11 @@ button{
     flex-direction: column;
     gap: 2em;
     width: 20em;
+    /* scroll list */
+    max-height: 20em;
+    max-width: 25em;
+    overflow: auto;
+    margin-top: 1em;
 }
 .friend img {
     width: 1em;
@@ -153,6 +158,7 @@ button{
     font-size: 1.5em;
     display: flex;
     align-items: center;
+    margin-right: 1em;
     
 }
 .friend:hover {
@@ -241,3 +247,5 @@ button{
     border-radius: 0.5em 0.5em 0 0.5em;
     
 }
+
+
