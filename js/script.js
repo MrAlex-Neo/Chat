@@ -9,17 +9,6 @@ function scrollToAction() {
 	document.querySelector('.friends').scrollTop = activeTop - 100;
 }
 
-function isValidLogin(login) {
-  // Проверка имени регулярным выражением
-  const pattern = /^[a-zA-Z0-9]+$/;
-  return pattern.test(login);
-}
-
-function isValidPassword(password) {
-  // Проверка пароля регулярным выражением
-  const pattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,20}$/;
-  return pattern.test(password);
-}
 
 //Windows
 const windowsBox = document.querySelectorAll(".contentBlock .box");
@@ -50,19 +39,42 @@ const userPasswordAutorization = document.getElementById("userPasswordAutorizati
 
 
 // Check Form
+function isValidLogin(login) {
+	// Проверка имени регулярным выражением
+	const pattern = /^[a-zA-Z0-9]+$/;
+	return pattern.test(login);
+}
+function isValidPassword(password) {
+	// Проверка пароля регулярным выражением
+	const pattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,20}$/;
+  	return pattern.test(password);
+}
+function isValidEmail(email) {
+	// Проверка пароля регулярным выражением
+	const EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+  	return EMAIL_REGEXP.test(email);
+}
+const EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+function isEmailValid(value) {
+ 	return EMAIL_REGEXP.test(value);
+}
+
 const form = document.querySelector('.my-form');
 const loginInput = form.querySelector('.username');
 const passwordInput = form.querySelector('.password');
 const confirmPasswordInput = form.querySelector('.confirm-password');
+const email = document.getElementById('userEmailRegistration');
+
 form.addEventListener('submit', (evt) => {
-  // Отменяем действие по умолчанию
-  evt.preventDefault();
-  // Получаем значения полей формы
-  const login = loginInput.value;
-  const password = passwordInput.value;
-  const confirmPassword = confirmPasswordInput.value;
-  // Проверяем, что поля заполнены
-  if (!login || !password || !confirmPassword) {
+	// Отменяем действие по умолчанию
+	evt.preventDefault();
+	// Получаем значения полей формы
+	const confirmPassword = confirmPasswordInput.value;
+	const login = loginInput.value;
+	const password = passwordInput.value;
+	const emailUser = email.value
+	// Проверяем, что поля заполнены
+  if (!login || !password || !confirmPassword || !emailUser) {
     alert('Пожалуйста, заполните все поля');
     return;
   }
@@ -71,6 +83,11 @@ form.addEventListener('submit', (evt) => {
     alert('Логин может содержать только буквы на латинице и цифры');
     return;
   }
+  if (!isValidEmail(emailUser)) {
+    alert('Укажите корректный адрес электронной почты');
+    return;
+  }
+  
   // Проверяем, что пароль содержит хотя бы одну заглавную букву, одну строчную букву и одну цифру
   if (!isValidPassword(password)) {
     alert('Пароль должен содержать как минимум одну заглавную букву, одну строчную букву и одну цифру');
@@ -183,7 +200,6 @@ async function sendRequest(url, method, data) {
 		});
 
 		response = await response.json();
-        // console.log(response)
 		return response;
 	} else if (method == "GET") {
 		url = url + "?" + new URLSearchParams(data);
@@ -216,7 +232,6 @@ async function getUser(username) {
 	peopleAll.map((pers) => {
 		friendsList.insertAdjacentHTML("beforeend", friendId (pers.first_name, pers.id))
 	})
-	// frendsListClickToChat(friendsList)
 	if (personInfo) {
 		// нет ошибки
 		document.getElementById("userName").innerHTML = `${personInfo.first_name}`
@@ -242,7 +257,6 @@ async function getUser(username) {
 //         friendsList.insertAdjacentHTML("beforeend", friendId (personList[i].first_name, personList.id))
 //         console.log(personList[i])
 //     }
-    
 // }
 
 
