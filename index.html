@@ -31,12 +31,12 @@
 						<input
 							type="text"
 							id="userEmailAutorization"
-							placeholder="Enter your email"
+							placeholder="Enter your email" required
 						/>
 						<input
 							type="text"
 							id="userPasswordAutorization"
-							placeholder="Enter your password"
+							placeholder="Enter your password" required
 						/>
 						<div class="continueBtn">
 							<button class="button">
@@ -57,41 +57,64 @@
 					</div>
 				</div>
 				<div class="registration none box" id="registrationDiv">
-					<div class="formRegistration" action="#">
+					<form class="formRegistration my-form" action="#">
 						<h2>Registration</h2>
 						<input
 							type="text"
 							placeholder="Enter your nickname"
 							id="userFirstNameRegistration"
+							class="username"
+							name="username" 
+							minlength="3" 
+							maxlength="20" 
+							required
 						/>
-						<input type="text" placeholder="Enter your age" />
+						<input type="number" 
+							placeholder="Enter your age" 
+							minlength="1" 
+							maxlength="2"
+							name="userAge"  
+						/>
 						<input
-							type="text"
+							type="email"
 							placeholder="Enter your email"
 							id="userEmailRegistration"
 						/>
 						<input
-							type="text"
+							type="password"
 							placeholder="Enter your password"
 							id="userPasswordRegistration"
+							class="password"
+							name="password" 
+							minlength="8" 
+							maxlength="20" 
+							required
 						/>
 						<input
-							type="text"
+							type="password"
 							placeholder="Enter your password"
 							id="userPasswordRegistrationCopy"
+							class="confirm-password"
+							name="confirmPassword" 
+							minlength="8" 
+							maxlength="20" 
+							required
 						/>
-						<button class="button">
-							<span data-title="Get ready!" id="registrationClick"
-								>Registration</span
-							>
-						</button>
+						<div class="continueBtn">
+							<button class="button" type="reset">
+								<span data-title="Go to Login!" id="backBtn">Back to Login</span>
+							</button>
+							<button class="button" type="submit">
+								<span type="submit" data-title="Get ready!" id="registrationClick">Registration</span>
+							</button>
+						</div>
 						<div class="enterWithIcons">
 							<span>Войти с помощью: </span>
 							<div><img src="./img/google.svg" alt="" /></div>
 							<div><img src="./img/discord.svg" alt="" /></div>
 							<div><img src="./img/facebook.svg" alt="" /></div>
 						</div>
-					</div>
+					</form>
 				</div>
 				<div class="userPerson none box" id="userPersonDiv">
 					<div class="userProfile">

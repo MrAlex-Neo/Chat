@@ -9,6 +9,19 @@ function scrollToAction() {
 	document.querySelector('.friends').scrollTop = activeTop - 100;
 }
 
+function isValidLogin(login) {
+  // Проверка имени регулярным выражением
+  const pattern = /^[a-zA-Z0-9]+$/;
+  return pattern.test(login);
+}
+
+function isValidPassword(password) {
+  // Проверка пароля регулярным выражением
+  const pattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,20}$/;
+  return pattern.test(password);
+}
+
+//Windows
 const windowsBox = document.querySelectorAll(".contentBlock .box");
 const authorizationWindow = document.getElementById("authorizationDiv");
 const registrationWindow = document.getElementById("registrationDiv");
@@ -18,27 +31,64 @@ const chatWindow = document.getElementById("chatBox");
 const inputChat = document.getElementById("inputChat");
 const userForChat = document.getElementById("anotherUserForChat");
 
-
+//btns
 const registrationBtn = document.getElementById("registration");
 const getHome = document.querySelectorAll(".getUserProfile");
 const friendsBtn = document.getElementById("friendsListBtn");
-const friendsList = document.getElementById("friendsList");
+const backBtn = document.getElementById('backBtn')
+
+//objects
 const friendsPerson = document.querySelectorAll(".friends .friend");
+const friendsList = document.getElementById("friendsList");
 
-
-const userEmailAutorization = document.getElementById("userEmailAutorization");
-const userPasswordAutorization = document.getElementById("userPasswordAutorization");
+//inputs
 const userFirstNameRegistration = document.getElementById("userFirstNameRegistration");
 const userEmailRegistration = document.getElementById("userEmailRegistration");
 const userPasswordRegistration = document.getElementById("userPasswordRegistration");
+const userEmailAutorization = document.getElementById("userEmailAutorization");
+const userPasswordAutorization = document.getElementById("userPasswordAutorization");
 
-let personList = new Array
 
-// litseners
+// Check Form
+const form = document.querySelector('.my-form');
+const loginInput = form.querySelector('.username');
+const passwordInput = form.querySelector('.password');
+const confirmPasswordInput = form.querySelector('.confirm-password');
+form.addEventListener('submit', (evt) => {
+  // Отменяем действие по умолчанию
+  evt.preventDefault();
+  // Получаем значения полей формы
+  const login = loginInput.value;
+  const password = passwordInput.value;
+  const confirmPassword = confirmPasswordInput.value;
+  // Проверяем, что поля заполнены
+  if (!login || !password || !confirmPassword) {
+    alert('Пожалуйста, заполните все поля');
+    return;
+  }
+  // Проверяем, что имя пользователя содержит только буквы и цифры
+  if (!isValidLogin(login)) {
+    alert('Логин может содержать только буквы на латинице и цифры');
+    return;
+  }
+  // Проверяем, что пароль содержит хотя бы одну заглавную букву, одну строчную букву и одну цифру
+  if (!isValidPassword(password)) {
+    alert('Пароль должен содержать как минимум одну заглавную букву, одну строчную букву и одну цифру');
+    return;
+  }
+  // Проверяем, что пароли совпадают
+  if (password !== confirmPassword) {
+    alert('Пароли не совпадают');
+    return;
+  }
+  // Если всё в порядке, отправляем форму
+  form.submit();
+});
 
+
+// listeners
 document.getElementById("authorizationClick").addEventListener("click", authorizationCheckUser);
 document.getElementById("registrationClick").addEventListener("click", registrationCheckUser);
-
 friendsBtn.onclick = function () {
 	userWindow.classList.add("none");
 	friendsWindow.classList.remove("none");
@@ -50,17 +100,21 @@ registrationBtn.onclick = function () {
 getHome.forEach((btn) => {
 	btn.addEventListener("click", openProfile);
 });
+backBtn.onclick = function () {
+	registrationWindow.classList.add("none");
+	authorizationWindow.classList.remove("none");
+};
+// friendsPerson.forEach((btn) => {
+// 	btn.addEventListener("click", function () {
+// 		let elem = event.target;
+// 		userForChat.innerHTML = elem.innerText;
+// 		friendsWindow.classList.add("none");
+// 		chatWindow.classList.remove("none");
+// 	});
+// });
 
-friendsPerson.forEach((btn) => {
-	btn.addEventListener("click", function () {
-		let elem = event.target;
-		userForChat.innerHTML = elem.innerText;
-		friendsWindow.classList.add("none");
-		chatWindow.classList.remove("none");
-	});
-});
 
-
+//functions
 function clickFriend () {
 	let elem = event.target;
 		userForChat.innerHTML = elem.innerText;
@@ -76,6 +130,43 @@ function openProfile() {
 	}
 	userWindow.classList.remove("none");
 }
+function authorizationCheckUser() {
+	if (userEmailAutorization.value === ''){
+		userEmailAutorization.style.border = '1px solid red'
+		console.log('Впишите Email!')
+	} else if (userPasswordAutorization.value === ''){
+		userPasswordAutorization.style.border = '1px solid red'
+	}else {
+		let userInfo = {
+			email: userEmailAutorization.value,
+			password: userPasswordAutorization.value,
+		};
+		getUser(userInfo);
+	}
+	
+}
+function registrationCheckUser() {
+	if (condition) {
+		
+	} else {
+		
+	}
+	let userInfo = {
+		first_name: userFirstNameRegistration.value,
+		email: userEmailRegistration.value,
+		password: userPasswordRegistration.value,
+	};
+	regUser(userInfo);
+}
+function friendId (nameFriend, id) {
+	return `
+	<div class="friend">
+		<img src="./img/user.svg" alt="" />
+		<span data-index="${id}">${nameFriend}</span>
+	</div>`
+}
+
+//API
 async function sendRequest(url, method, data) {
 	// e.preventDefault();
 	url = `https://nurbek.lol/api/${url}`;
@@ -107,35 +198,6 @@ async function sendRequest(url, method, data) {
 		return response;
 	}
 }
-
-function authorizationCheckUser() {
-	if (userEmailAutorization.value === ''){
-		userEmailAutorization.style.border = '1px solid red'
-		console.log('Впишите Email!')
-	} else if (userPasswordAutorization.value === ''){
-		userPasswordAutorization.style.border = '1px solid red'
-	}else {
-		let userInfo = {
-			email: userEmailAutorization.value,
-			password: userPasswordAutorization.value,
-		};
-		getUser(userInfo);
-	}
-	
-}
-function registrationCheckUser() {
-	if (condition) {
-		
-	} else {
-		
-	}
-	let userInfo = {
-		first_name: userFirstNameRegistration.value,
-		email: userEmailRegistration.value,
-		password: userPasswordRegistration.value,
-	};
-	regUser(userInfo);
-}
 async function regUser(userInfo) {
 	let response = await sendRequest("register/", "POST", userInfo);
     if (response !== ''){
@@ -166,6 +228,11 @@ async function getUser(username) {
 	}
 }
 
+
+
+
+
+
 // function render() {
 //     friendsList.innerHTML = ''
 //     if (personList.length === 0) {
@@ -178,11 +245,4 @@ async function getUser(username) {
     
 // }
 
-function friendId (nameFriend, id) {
-    return `
-    <div class="friend">
-        <img src="./img/user.svg" alt="" />
-        <span data-index="${id}">${nameFriend}</span>
-    </div>`
-}
 
