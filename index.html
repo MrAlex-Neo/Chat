@@ -9,185 +9,174 @@
 		/>
 		<title>Chat</title>
 		<link rel="stylesheet" href="./css/style.css" />
-		<style>
-			.pa {
-				position: absolute;
-				top: 0;
-				right: 0;
-				bottom: 0;
-				left: 0;
-			}
-			.z0 {
-				z-index: 0;
-			}
-		</style>
 	</head>
 	<body>
-		<div class="pa z0 your-element-selector">
-			<div class="contentBlock" id="mainBoxForDiv">
-				<div class="authorization box" id="authorizationDiv">
-					<form class="formRegistration aut-form" action="#">
-						<h2>Entering the Сhat</h2>
-						<input
-							type="email"
-							id="userEmailAutorization"
-							class="userEmailAutorization"
-							placeholder="Enter your email" 
-							name="email"
-							required
-						/>
-						<input
-							type="password"
-							id="userPasswordAutorization"
-							class="userPasswordAutorization"
-							placeholder="Enter your password"
-							name="password"
-							required
-						/>
-						<div class="continueBtn">
-							<button class="button" type="submit">
-								<span id="authorizationClick" data-title="OH YEAH!">Login</span>
-							</button>
-							<button class="button">
-								<span data-title="Get ready!" id="registration">Registration</span>
-							</button>
+		<div class="contentBlock" id="mainBoxForDiv">
+			<div class="authorization none box" id="authorizationDiv">
+				<div class="login-box">
+					<h2>Login</h2>
+					<form>
+					  <div class="user-box">
+						<input type="text" name="" required="">
+						<label>Email</label>
+					  </div>
+					  <div class="user-box">
+						<input type="password" name="" required="">
+						<label>Password</label>
+					  </div>
+					  <div class="autBtn">
+						<div class="mainBtn">
+							<a href="#">
+							  <span></span>
+							  <span></span>
+							  <span></span>
+							  <span></span>
+							  Login
+							</a>
 						</div>
-						<div class="enterWithIcons">
-							<span>Войти с помощью: </span>
-							<div><img src="./img/google.svg" alt="" /></div>
-							<div><img src="./img/discord.svg" alt="" /></div>
-							<div><img src="./img/facebook.svg" alt="" /></div>
-						</div>
+						  <a href="#">
+							<span></span>
+							<span></span>
+							<span></span>
+							<span></span>
+							Registration
+						  </a>
+					  </div>
 					</form>
-				</div>
-				<div class="registration none box" id="registrationDiv">
-					<form class="formRegistration reg-form" action="#">
-						<h2>Registration</h2>
-						<input
-							type="text"
-							placeholder="Enter your nickname"
-							id="userFirstNameRegistration"
-							class="username"
-							name="username" 
-							minlength="3" 
-							maxlength="20" 
-							required
-						/>
-						<input type="number" 
-							placeholder="Enter your age" 
-							name="age"  
-							required
-						/>
-						<input
-							type="email"
-							placeholder="Enter your email"
-							id="userEmailRegistration"
-							name="email"
-							required
-						/>
-						<input
-							type="password"
-							placeholder="Enter your password"
-							id="userPasswordRegistration"
-							class="password"
-							name="password" 
-							minlength="8" 
-							maxlength="20" 
-							required
-						/>
-						<input
-							type="password"
-							placeholder="Enter your password"
-							id="userPasswordRegistrationCopy"
-							class="confirm-password"
-							name="confirmPassword" 
-							minlength="8" 
-							maxlength="20" 
-							required
-						/>
-						<div class="continueBtn">
-							<button class="button" type="reset">
-								<span data-title="Go to Login!" id="backBtn">Back to Login</span>
-							</button>
-							<button class="button" type="submit">
-								<span type="submit" data-title="Get ready!" id="registrationClick">Registration</span>
-							</button>
-						</div>
-						<div class="enterWithIcons">
-							<span>Войти с помощью: </span>
-							<div><img src="./img/google.svg" alt="" /></div>
-							<div><img src="./img/discord.svg" alt="" /></div>
-							<div><img src="./img/facebook.svg" alt="" /></div>
-						</div>
-					</form>
-				</div>
-				<div class="userPerson none box" id="userPersonDiv">
-					<!-- <div class="userProfileHeader">
-						<div class="userProfileHeaderLeft">
-							<span>Profile</span>
-							<span>Friends</span>
-							<span>Search</span>
-							<span>Open Chat</span>
-						</div>
-						<div class="userProfileHeaderRight">
-							<span>Settings</span>
-							<span>Leave Chat</span>
-							<span>Help</span>
-						</div>
-					</div> -->
-					
-					<div class="userProfile">
-						<div class="getUserProfile">
-							<img src="./img/profile-svgrepo-com.svg" class="getHome" alt="" />
-						</div>
-						<div class="userList">
-							<div class="userName">
-								<img src="./img/user.svg" alt="" />
-								<span id="userName">Boris</span>
-							</div>
-							<span>age: <span class="userAge" id="userAge">70</span></span>
-							<button class="button">
-								<span id="friendsListBtn" data-title="Check list...">Friends</span>
-							</button>
-						</div>
-					</div>
-				</div>
-				<div class="friendsList none box" id="friendsBox">
-					<div class="getUserProfile">
-						<img src="./img/profile-svgrepo-com.svg" class="getHome" alt="" />
-					</div>
-					<div class="friends" id="friendsList">
-					</div>
-				</div>
-				<div class="chat none box" id="chatBox">
-					<div class="chatHead">
-						<div class="getUserProfile">
-							<img src="./img/profile-svgrepo-com.svg" class="getHome" alt="" />
-						</div>
-						<div class="anotherUserForChat" id="anotherUserForChat">
-							Сompanion
-						</div>
-					</div>
-					<div class="chatWindow">
-						<div class="textInput">
-							<div class="messagesChat">
-								<span class="user">asdasd</span>
-								<span class="companion">asdasd</span>
-							</div>
-							<img src="./img/sendLetter.svg" alt="" />
-							<input
-								type="text"
-								id="inputChat"
-								placeholder="Напишите что нибудь!(пожалуйста, ёпт)"
-							/>
-						</div>
-					</div>
-				</div>
+				  </div>
 			</div>
+			<div class="registration none box" id="registrationDiv">
+				<div class="login-box">
+					<h2>Login</h2>
+					<form>
+					  <div class="user-box">
+						<input type="text" name="" required="">
+						<label>Email</label>
+					  </div>
+					  <div class="user-box">
+						<input type="password" name="" required="">
+						<label>Password</label>
+					  </div>
+					  <div class="user-box">
+						<input type="password" name="" required="">
+						<label>Password</label>
+					  </div>
+					  <div class="regBtn">
+							<a href="#">
+							  <span></span>
+							  <span></span>
+							  <span></span>
+							  <span></span>
+							  Go to login
+							</a>
+						<div class="mainBtn">
+						  <a href="#">
+							<span></span>
+							<span></span>
+							<span></span>
+							<span></span>
+							Registration
+						  </a>
+						</div>
+					  </div>
+					</form>
+				  </div>
+			</div>
+			<div class="userPerson box" id="userPersonDiv">
+				
+				<div class="main-container">
+
+					<!-- HEADER -->
+					<header class="block">
+						<ul class="header-menu horizontal-list">
+							<li>
+								<a class="header-menu-tab" href="#1"><span class="icon entypo-cog scnd-font-color"></span>Settings</a>
+							</li>
+							<li>
+								<a class="header-menu-tab" href="#2"><span class="icon fontawesome-user scnd-font-color"></span>Account</a>
+							</li>
+							<li>
+								<a class="header-menu-tab" href="#3"><span class="icon fontawesome-envelope scnd-font-color"></span>Messages</a>
+								<a class="header-menu-number" href="#4">5</a>
+							</li>
+							<li>
+								<a class="header-menu-tab" href="#5"><span class="icon fontawesome-star-empty scnd-font-color"></span>Go to CHat</a>
+							</li>
+						</ul>
+						<div class="profile-menu">
+							<p>Me <a href="#26"><span class="entypo-down-open scnd-font-color"></span></a></p>
+							<div class="profile-picture small-profile-picture">
+								<img width="40px" src="./img/ManUser.jpg">
+							</div>
+						</div>
+					</header>
+					<div class="userProfileContainers">
+						<!-- LEFT-CONTAINER -->
+						<div>
+
+						</div>
+						<div class="left-container container">
+							<div class="menu-box block"> <!-- MENU BOX (LEFT-CONTAINER) -->
+								<h2 class="titular">MENU BOX</h2>
+								<ul class="menu-box-menu">
+									<li>
+										<a class="menu-box-tab" href="#6"><span class="icon fontawesome-envelope scnd-font-color"></span>Messages<div class="menu-box-number">24</div></a>                            
+									</li>
+									<li>
+										<a class="menu-box-tab" href="#8"><span class="icon entypo-paper-plane scnd-font-color"></span>Friends<div class="menu-box-number">3</div></a>                            
+									</li>
+									<li>
+										<a class="menu-box-tab" href="#10"><span class="icon entypo-calendar scnd-font-color"></span>Х/З<div class="menu-box-number">5</div></a>                            
+									</li>
+									<li>
+										<a class="menu-box-tab" href="#12"><span class="icon entypo-cog scnd-font-color"></span>Account Settings</a>
+									</li>
+									<li>
+										<a class="menu-box-tab" href="#13"><sapn class="icon entypo-chart-line scnd-font-color"></sapn>Statistics</a>
+									</li>                        
+								</ul>
+							</div>
+						</div>
+						<!-- MIDDLE-CONTAINER -->
+						<div class="middle-container container">
+							<div class="profile block"> <!-- PROFILE (MIDDLE-CONTAINER) -->
+								<a class="add-button" href="#28"><span class="icon entypo-plus scnd-font-color"></span></a>
+								<div class="profile-picture big-profile-picture clear">
+									<img class="imgUser" src="./img/ManUser.jpg" >
+								</div>
+								<h1 class="user-name">Anne Hathaway</h1>
+								<div class="profile-description">
+									<p class="scnd-font-color">Lorem ipsum dolor sit amet consectetuer adipiscing</p>
+								</div>
+								<ul class="profile-options horizontal-list">
+									<li><a class="comments" href="#40"><p><span class="icon fontawesome-comment-alt scnd-font-color"></span>23</li></p></a>
+									<li><a class="views" href="#41"><p><span class="icon fontawesome-eye-open scnd-font-color"></span>841</li></p></a>
+									<li><a class="likes" href="#42"><p><span class="icon fontawesome-heart-empty scnd-font-color"></span>49</li></p></a>
+								</ul>
+							</div>
+						</div>
+						<!-- RIGHT-CONTAINER -->
+						<div class="right-container container">
+							<div class="join-newsletter block"> <!-- JOIN NEWSLETTER (RIGHT-CONTAINER) -->
+								<h2 class="titular">JOIN THE NEWSLETTER</h2>
+								<div class="input-container">
+									<input type="text" placeholder="yourname@gmail.com" class="email text-input">
+									<div class="input-icon envelope-icon-newsletter"><span class="fontawesome-envelope scnd-font-color"></span></div>
+								</div>
+								<a class="subscribe button" href="#21">SUBSCRIBE</a>
+							</div>
+						</div> <!-- end right-container -->
+					</div> <!-- end right-container -->
+				</div> <!-- end main-container -->
+		
+
+			</div>
+
+
+
 		</div>
 
-		<script src="./js/three.r92.min.js"></script>
-		<script src="./js/vanta.waves.min.js"></script>
+
 		<script src="./js/script.js"></script>
 	</body>
 </html>
