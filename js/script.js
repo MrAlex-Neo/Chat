@@ -38,6 +38,13 @@ const userEmailAutorization = document.getElementById("userEmailAutorization");
 const userPasswordAutorization = document.getElementById("userPasswordAutorization");
 
 
+let getFriends = () => {
+	
+	const friendsBox = document.querySelectorAll('.friend')
+	return friendsBox
+}
+
+
 // Check Form
 function isValidLogin(login) {
 	// Проверка имени регулярным выражением
@@ -236,6 +243,7 @@ async function getUser(username) {
 	peopleAll.map((pers) => {
 		friendsList.insertAdjacentHTML("beforeend", friendId (pers.first_name, pers.id))
 	})
+	console.log(friendsList)
 	if (personInfo && response) {
 		// нет ошибки
 		document.getElementById("userName").innerHTML = `${personInfo.first_name}`
