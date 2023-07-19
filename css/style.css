@@ -516,7 +516,7 @@ header {
     flex-basis: 25%;
 }
 .menu-box {
-    height: 360px;
+    height: 300px;
 }
 .menu-box .titular {
     background: #11a8ab;
@@ -658,5 +658,6 @@ header {
     background: #0F9295;
 }
 
+/* Go TO Chat */
 
 			
