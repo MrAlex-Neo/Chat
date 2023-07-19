@@ -832,3 +832,7 @@ body[data-theme=dark] {
     height: calc(100% - 48px);
   }
 }/*# sourceMappingURL=chat.css.map */
+.aHrefGoBack {
+  text-transform: none;
+  text-decoration: none;
+}
