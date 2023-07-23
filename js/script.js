@@ -12,6 +12,7 @@ const getAutorizationBox = document.getElementById('getAutorizationBox')
 //inputs
 const userEmailAutorization = document.getElementById("userEmailAutorization");
 const userPasswordAutorization = document.getElementById("userPasswordAutorization");
+
 const userFirstNameRegistration = document.getElementById("userFirstNameRegistration");
 const userEmailRegistration = document.getElementById("userEmailRegistration");
 const userPasswordRegistration = document.getElementById("userPasswordRegistration");
@@ -20,15 +21,21 @@ const userPasswordRegistration = document.getElementById("userPasswordRegistrati
 // Other variables
 const userName = document.getElementById('userName')
 const getProfileUser = document.getElementById('getProfileUser')
-
-
-
-
-
+const logOut = document.getElementById('logOut')
+const userNameChat = document.getElementById('userNameChat')
+const goToChat = document.getElementById('goToChat')
 
 
 // listeners
 autorizationBtn.addEventListener("click", authorizationCheckUser);
+registrationBtn.addEventListener("click", registrationCheckUser);
+
+logOut.onclick = function () {
+	localStorage.removeItem('user')
+	userEmailAutorization.value = ''
+	userPasswordAutorization.value = ''
+	getUserDetail()
+}
 // getProfileUser.onclick = function() {
 // 	openProfile(userWindow)
 // 	console.log(userName.innerHTML)
@@ -42,6 +49,15 @@ function authorizationCheckUser() {
 	};
 	getUser(userInfo);
 }
+function registrationCheckUser () {
+	let userInfo = {
+		first_name: userFirstNameRegistration.value,
+		email: userEmailRegistration.value,
+		password: userPasswordRegistration.value,
+	};
+	addUser(userInfo);
+
+}
 function openProfile(box) {
 	for (i = 0; i < windowsBox.length; i++) {
 		windowsBox[i].classList.add("none");
@@ -49,14 +65,23 @@ function openProfile(box) {
 	box.classList.remove("none");
 }
 
-if (userName.innerHTML === 'Yura Maksimus') {
-	openProfile(authorizationWindow)
-} else {
-	openProfile(userWindow)
+
+const getUserDetail = () => {
+	let user = JSON.parse(localStorage.getItem('user'))
+	console.log(user)
+	if (user) {
+		openProfile(userWindow)
+		userName.innerHTML = user.first_name
+		userNameChat.innerHTML = user.first_name
+	} else {
+		openProfile(authorizationWindow)
+	
+	}
 }
-// console.log(userName.innerHTML)
-
-
+// goToChat.onclick = function () {
+// 	getUserDetail()
+// }
+getUserDetail()
 
 
 
@@ -137,11 +162,22 @@ async function sendRequest(url, method, data) {
 async function getUser(userInfo) {
 	let response = await sendRequest("auth", "GET", userInfo);
 	let personInfo = await sendRequest("user", "GET", {'id': response.id});
-	if (response) {
-		document.getElementById("userName").innerHTML = `${personInfo.first_name}`
+	if (response && personInfo) {
+		// userName.innerHTML = `${personInfo.first_name}`
 		openProfile(userWindow);
+		console.log(personInfo);
+		let user = localStorage.setItem('user', JSON.stringify(personInfo))
+		getUserDetail()
 	} else {
 		alert("Такого пользователя не существует!");
+	}
+}
+async function addUser (userInfo) {
+	let response = await sendRequest("register/", "POST", userInfo);
+	if (response) {
+		openProfile(authorizationWindow)
+	} else {
+		alert('mistake!');
 	}
 }
 	

@@ -47,7 +47,7 @@
 					</form>
 				  </div>
 			</div>
-			<div class="registration none box" id="registrationBox"><!-- Registration Window -->
+			<div class="registration box" id="registrationBox"><!-- Registration Window -->
 				<div class="login-box">
 					<h2>Registration</h2>
 					<form>
@@ -63,10 +63,10 @@
 							<input type="password" name="" id="userPasswordRegistration" required>
 							<label>Password</label>
 						</div>
-						<div class="user-box">
+						<!-- <div class="user-box">
 							<input type="password" name="" required>
 							<label>Password</label>
-						</div>
+						</div> -->
 						<div class="regBtn" id="getAutorizationBox">
 							<a href="#">
 							  <span></span>
@@ -88,7 +88,7 @@
 					</form>
 				  </div>
 			</div>
-			<div class="userPerson box" id="userPersonBox"><!-- Profile Window -->
+			<div class="userPerson none box" id="userPersonBox"><!-- Profile Window -->
 				<div class="main-container">
 					<!-- HEADER -->
 					<header class="block ">
@@ -99,19 +99,22 @@
 							<li>
 								<a class="header-menu-tab" href="#2"><span class="icon fontawesome-user scnd-font-color"></span>Account</a>
 							</li>
-							<li>
+							<!-- <li>
 								<a class="header-menu-tab" href="#3"><span class="icon fontawesome-envelope scnd-font-color"></span>Messages</a>
 								<a class="header-menu-number" href="#4">5</a>
-							</li>
+							</li> -->
 							<li>
-								<a class="header-menu-tab" href="./chat/chat.html"><span class="icon fontawesome-star-empty scnd-font-color"></span>Go to CHat</a>
+								<a class="header-menu-tab" href="./chat/chat.html" id="goToChat"><span class="icon fontawesome-star-empty scnd-font-color"></span>Go to CHat</a>
 							</li>
 						</ul>
-						<div class="profile-menu">
-							<p>Me <a href="#26"><span class="entypo-down-open scnd-font-color"></span></a></p>
-							<div class="profile-picture small-profile-picture">
-								<img width="40px" src="./img/ManUser.jpg">
-							</div>
+						<div class="profile-menu mainBtn">
+							<a id="logOut">
+								<!-- <span></span>
+								<span></span>
+								<span></span>
+								<span></span> -->
+								Log out 
+							</a>
 						</div>
 					</header>
 					<div class="userProfileContainers">
@@ -120,9 +123,9 @@
 							<div class="menu-box block"> <!-- MENU BOX (LEFT-CONTAINER) -->
 								<h2 class="titular">MENU</h2>
 								<ul class="menu-box-menu">
-									<li>
+									<!-- <li>
 										<a class="menu-box-tab" href="#6"><span class="icon fontawesome-envelope scnd-font-color"></span>Messages<div class="menu-box-number">24</div></a>                            
-									</li>
+									</li> -->
 									<li>
 										<a class="menu-box-tab" href="#8"><span class="icon entypo-paper-plane scnd-font-color"></span>Friends<div class="menu-box-number">3</div></a>                            
 									</li>

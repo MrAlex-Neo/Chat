@@ -29,3 +29,12 @@ themeColors.forEach(themeColor => {
     themeColor.classList.add('active');
   });
 });
+
+const getUserDetailForChat = () => {
+	let user = JSON.parse(localStorage.getItem('user'))
+	console.log(user)
+	if (user) {
+		userNameChat.innerHTML = user.first_name
+	} 
+}
+getUserDetailForChat()
