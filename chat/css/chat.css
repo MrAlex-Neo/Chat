@@ -98,6 +98,7 @@ body[data-theme=navy-dark] {
   --message-box-1: #576c99;
   --chat-input: #060415;
   --border-light: #8187a2;
+  --info-box-color-4: 	#FF0000;
 }
 body[data-theme=navy-dark], body[data-theme=dark] {
   --text-dark: rgba(255,255,255,1);
