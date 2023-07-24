@@ -115,7 +115,7 @@ body[data-theme=dark] {
   --app-bg: #040508;
   --box-color: #131a24;
   --box-border: #131a24;
-  --button-bg: #1e2b4a;
+  --button-bg: #1e2b4a; /* #1e2b4a*/
   --toggle-bg: #477eff;
   --toggle-bg-off: #6895a3;
   --message-box-2: #1e2b4a;
