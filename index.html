@@ -89,15 +89,14 @@
 					</form>
 				  </div>
 			</div>
-			<div class="userPerson none box" id="userPersonBox"><!-- Profile Window -->
-				<div class="main-container">
+				<div class="userPerson none box" id="userPersonBox"><!-- Profile Window -->
 					<!-- HEADER -->
-					<header class="block ">
+					<header class="block">
 						<ul class="header-menu horizontal-list">
-							<li>
+							<li id="getSettingsBox">
 								<a class="header-menu-tab" href="#1"></span>Settings</a>
 							</li>
-							<li>
+							<li id="getAccountBox">
 								<a class="header-menu-tab" href="#2"></span>Account</a>
 							</li>
 							<!-- <li>
@@ -110,96 +109,97 @@
 						</ul>
 						<div class="profile-menu mainBtn">
 							<a id="logOut" class="logOut">
-								<!-- <span></span>
-								<span></span>
-								<span></span>
-								<span></span> -->
 								Log out 
 							</a>
 						</div>
 					</header>
-					<div class="userProfileContainers">
-						<!-- LEFT-CONTAINER -->
-						<div class="left-container container">
-							<div class="menu-box block"> <!-- MENU BOX (LEFT-CONTAINER) -->
-								<h2 class="titular">MENU</h2>
-								<ul class="menu-box-menu">
-									<!-- <li>
-										<a class="menu-box-tab" href="#6"><span class="icon fontawesome-envelope scnd-font-color"></span>Messages<div class="menu-box-number">24</div></a>                            
-									</li> -->
-									<li>
-										<a class="menu-box-tab" href="#8"><span class="icon entypo-paper-plane scnd-font-color"></span>Friends<div class="menu-box-number">3</div></a>                            
-									</li>
-									<li>
-										<a class="menu-box-tab" href="#12"><span class="icon entypo-cog scnd-font-color"></span>Account Settings</a>
-									</li>
-									<li>
-										<a class="menu-box-tab" href="#13"><sapn class="icon entypo-chart-line scnd-font-color"></sapn>Statistics</a>
-									</li>                        
-								</ul>
-							</div>
-						</div>
-						<!-- MIDDLE-CONTAINER -->
-						<div class="middle-container container">
-							<div class="profile block"> <!-- PROFILE (MIDDLE-CONTAINER) -->
-								<a class="add-button" href="#28"><span class="icon entypo-plus scnd-font-color"></span></a>
-								<div class="profile-picture big-profile-picture clear">
-									<img class="imgUser" src="./img/ManUser.jpg" >
+					<div id="account"><!-- account -->
+						<div class="flex">
+							<!-- LEFT-CONTAINER -->
+							<div class="left-container container">
+								<div class="menu-box block"> <!-- MENU BOX (LEFT-CONTAINER) -->
+									<h2 class="titular">MENU</h2>
+									<ul class="menu-box-menu">
+										<!-- <li>
+											<a class="menu-box-tab" href="#6"><span class="icon fontawesome-envelope scnd-font-color"></span>Messages<div class="menu-box-number">24</div></a>                            
+										</li> -->
+										<li>
+											<a class="menu-box-tab" href="#8"><span class="icon entypo-paper-plane scnd-font-color"></span>Friends<div class="menu-box-number">3</div></a>                            
+										</li>
+										<li>
+											<a class="menu-box-tab" href="#12"><span class="icon entypo-cog scnd-font-color"></span>About me...</a>
+										</li>
+										<li>
+											<a class="menu-box-tab" href="#13"><sapn class="icon entypo-chart-line scnd-font-color"></sapn>Statistics</a>
+										</li>                        
+									</ul>
 								</div>
-								<h1 class="user-name" id="userName">Yura Maksimus</h1>
-								<div class="profile-description">
-									<p class="scnd-font-color">This guy is a real monster in communication! Beware!</p>
-								</div>
-								<!-- <ul class="profile-options horizontal-list">
-									<li><a class="comments" href="#40"><p><span class="icon fontawesome-comment-alt scnd-font-color"></span>23</li></p></a>
-									<li><a class="views" href="#41"><p><span class="icon fontawesome-eye-open scnd-font-color"></span>841</li></p></a>
-									<li><a class="likes" href="#42"><p><span class="icon fontawesome-heart-empty scnd-font-color"></span>49</li></p></a>
-								</ul> -->
 							</div>
-						</div>
-						<!-- RIGHT-CONTAINER -->
-						<div class="right-container container">
-							<div class="join-newsletter block"> <!-- JOIN NEWSLETTER (RIGHT-CONTAINER) -->
-								<h2 class="titular">What do you like do on Sunday?</h2>
-								<div class="input-container">
-									<input type="text" placeholder="I like to kick the tree in free time!" class="email text-input">
-									<div class="input-icon envelope-icon-newsletter"><span class="fontawesome-envelope scnd-font-color"></span></div>
+							<!-- MIDDLE-CONTAINER -->
+							<div class="middle-container container">
+								<div class="profile block"> <!-- PROFILE (MIDDLE-CONTAINER) -->
+									<a class="add-button" href="#28"><span class="icon entypo-plus scnd-font-color"></span></a>
+									<div class="profile-picture big-profile-picture clear">
+										<img class="imgUser" src="./img/ManUser.jpg" >
+									</div>
+									<h1 class="user-name" id="userName">Yura Maksimus</h1>
+									<div class="profile-description">
+										<p class="scnd-font-color">This guy is a real monster in communication! Beware!</p>
+									</div>
+									<!-- <ul class="profile-options horizontal-list">
+										<li><a class="comments" href="#40"><p><span class="icon fontawesome-comment-alt scnd-font-color"></span>23</li></p></a>
+										<li><a class="views" href="#41"><p><span class="icon fontawesome-eye-open scnd-font-color"></span>841</li></p></a>
+										<li><a class="likes" href="#42"><p><span class="icon fontawesome-heart-empty scnd-font-color"></span>49</li></p></a>
+									</ul> -->
 								</div>
-								<a class="subscribe button" href="#21">SEND</a>
 							</div>
-						</div> <!-- end right-container -->
-					</div> <!-- end right-container -->
-				</div> <!-- end main-container -->
+							<!-- RIGHT-CONTAINER -->
+							<div class="right-container container">
+								<div class="join-newsletter block"> <!-- JOIN NEWSLETTER (RIGHT-CONTAINER) -->
+									<h2 class="titular">What do you like do on Sunday?</h2>
+									<div class="input-container">
+										<input type="text" placeholder="I like to kick the tree in free time!" class="email text-input">
+										<div class="input-icon envelope-icon-newsletter"><span class="fontawesome-envelope scnd-font-color"></span></div>
+									</div>
+									<a class="subscribe button" href="#21">SEND</a>
+								</div>
+							</div> <!-- end right-container -->
+						</div>	<!-- flex-container -->
+					</div> <!-- end user Profile Containers -->
+					<div class="settings block none" id="profileSettings">
+						
+					</div>
+
+				</div>
 			</div>
 		</div>
 		<div class="app-right-bottom">
-            <div class="app-theme-selector">
-            <button class="theme-color indigo" data-color="indigo">
-              <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" title="Indigo">
-                <defs/>
-                <path fill="#fff" d="M451.648.356c-25.777 2.712-56.79 19.872-94.811 52.46-68.786 58.958-149.927 160.756-202.185 234-38.158-5.951-78.375 10.368-102.187 40.133C8.758 381.584 45.347 430.34 4.12 473.811c-7.179 7.569-4.618 20.005 4.98 24.114 67.447 28.876 153.664 10.879 194.109-31.768 24.718-26.063 38.167-64.54 31.411-100.762 72.281-55.462 172.147-140.956 228.7-211.885 31.316-39.277 47.208-70.872 48.584-96.59C513.759 22.273 486.87-3.346 451.648.356zM181.443 445.511c-27.362 28.85-87.899 45.654-141.767 31.287 30.12-48.043 4.229-91.124 36.214-131.106 26.246-32.808 79.034-41.993 109.709-11.317 35.839 35.843 19.145 86.566-4.156 111.136zm3.07-148.841c7.354-10.167 18.887-25.865 33.29-44.659l49.22 49.224c-18.125 14.906-33.263 26.86-43.077 34.494-8.842-15.879-22.526-30.108-39.433-39.059zM481.948 55.316c-3.368 63.004-143.842 186.021-191.797 226.621l-53.785-53.79c39.458-49.96 155.261-191.312 218.422-197.954 16.851-1.775 28.03 8.858 27.16 25.123z"/>
-              </svg>
-            </button>
-            <button class="theme-color pink" data-color="pink" title="Pink">
-              <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" >
-                <defs/>
-                <path fill="#fff" d="M451.648.356c-25.777 2.712-56.79 19.872-94.811 52.46-68.786 58.958-149.927 160.756-202.185 234-38.158-5.951-78.375 10.368-102.187 40.133C8.758 381.584 45.347 430.34 4.12 473.811c-7.179 7.569-4.618 20.005 4.98 24.114 67.447 28.876 153.664 10.879 194.109-31.768 24.718-26.063 38.167-64.54 31.411-100.762 72.281-55.462 172.147-140.956 228.7-211.885 31.316-39.277 47.208-70.872 48.584-96.59C513.759 22.273 486.87-3.346 451.648.356zM181.443 445.511c-27.362 28.85-87.899 45.654-141.767 31.287 30.12-48.043 4.229-91.124 36.214-131.106 26.246-32.808 79.034-41.993 109.709-11.317 35.839 35.843 19.145 86.566-4.156 111.136zm3.07-148.841c7.354-10.167 18.887-25.865 33.29-44.659l49.22 49.224c-18.125 14.906-33.263 26.86-43.077 34.494-8.842-15.879-22.526-30.108-39.433-39.059zM481.948 55.316c-3.368 63.004-143.842 186.021-191.797 226.621l-53.785-53.79c39.458-49.96 155.261-191.312 218.422-197.954 16.851-1.775 28.03 8.858 27.16 25.123z"/>
-              </svg>
-            </button>
-            <button class="theme-color navy-dark active" data-color="navy-dark" title="Navy Dark">
-              <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
-                <defs/>
-                <path fill="#fff" d="M451.648.356c-25.777 2.712-56.79 19.872-94.811 52.46-68.786 58.958-149.927 160.756-202.185 234-38.158-5.951-78.375 10.368-102.187 40.133C8.758 381.584 45.347 430.34 4.12 473.811c-7.179 7.569-4.618 20.005 4.98 24.114 67.447 28.876 153.664 10.879 194.109-31.768 24.718-26.063 38.167-64.54 31.411-100.762 72.281-55.462 172.147-140.956 228.7-211.885 31.316-39.277 47.208-70.872 48.584-96.59C513.759 22.273 486.87-3.346 451.648.356zM181.443 445.511c-27.362 28.85-87.899 45.654-141.767 31.287 30.12-48.043 4.229-91.124 36.214-131.106 26.246-32.808 79.034-41.993 109.709-11.317 35.839 35.843 19.145 86.566-4.156 111.136zm3.07-148.841c7.354-10.167 18.887-25.865 33.29-44.659l49.22 49.224c-18.125 14.906-33.263 26.86-43.077 34.494-8.842-15.879-22.526-30.108-39.433-39.059zM481.948 55.316c-3.368 63.004-143.842 186.021-191.797 226.621l-53.785-53.79c39.458-49.96 155.261-191.312 218.422-197.954 16.851-1.775 28.03 8.858 27.16 25.123z"/>
-              </svg>
-            </button>
-            <button class="theme-color dark" data-color="dark" title="Dark">
-              <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
-                <defs/>
-                <path fill="currentColor" d="M451.648.356c-25.777 2.712-56.79 19.872-94.811 52.46-68.786 58.958-149.927 160.756-202.185 234-38.158-5.951-78.375 10.368-102.187 40.133C8.758 381.584 45.347 430.34 4.12 473.811c-7.179 7.569-4.618 20.005 4.98 24.114 67.447 28.876 153.664 10.879 194.109-31.768 24.718-26.063 38.167-64.54 31.411-100.762 72.281-55.462 172.147-140.956 228.7-211.885 31.316-39.277 47.208-70.872 48.584-96.59C513.759 22.273 486.87-3.346 451.648.356zM181.443 445.511c-27.362 28.85-87.899 45.654-141.767 31.287 30.12-48.043 4.229-91.124 36.214-131.106 26.246-32.808 79.034-41.993 109.709-11.317 35.839 35.843 19.145 86.566-4.156 111.136zm3.07-148.841c7.354-10.167 18.887-25.865 33.29-44.659l49.22 49.224c-18.125 14.906-33.263 26.86-43.077 34.494-8.842-15.879-22.526-30.108-39.433-39.059zM481.948 55.316c-3.368 63.004-143.842 186.021-191.797 226.621l-53.785-53.79c39.458-49.96 155.261-191.312 218.422-197.954 16.851-1.775 28.03 8.858 27.16 25.123z"/>
-              </svg>
-            </button>
-          </div>
-        </div>
+			<div class="app-theme-selector">
+			<button class="theme-color indigo" data-color="indigo">
+			<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" title="Indigo">
+				<defs/>
+				<path fill="#fff" d="M451.648.356c-25.777 2.712-56.79 19.872-94.811 52.46-68.786 58.958-149.927 160.756-202.185 234-38.158-5.951-78.375 10.368-102.187 40.133C8.758 381.584 45.347 430.34 4.12 473.811c-7.179 7.569-4.618 20.005 4.98 24.114 67.447 28.876 153.664 10.879 194.109-31.768 24.718-26.063 38.167-64.54 31.411-100.762 72.281-55.462 172.147-140.956 228.7-211.885 31.316-39.277 47.208-70.872 48.584-96.59C513.759 22.273 486.87-3.346 451.648.356zM181.443 445.511c-27.362 28.85-87.899 45.654-141.767 31.287 30.12-48.043 4.229-91.124 36.214-131.106 26.246-32.808 79.034-41.993 109.709-11.317 35.839 35.843 19.145 86.566-4.156 111.136zm3.07-148.841c7.354-10.167 18.887-25.865 33.29-44.659l49.22 49.224c-18.125 14.906-33.263 26.86-43.077 34.494-8.842-15.879-22.526-30.108-39.433-39.059zM481.948 55.316c-3.368 63.004-143.842 186.021-191.797 226.621l-53.785-53.79c39.458-49.96 155.261-191.312 218.422-197.954 16.851-1.775 28.03 8.858 27.16 25.123z"/>
+			</svg>
+			</button>
+			<button class="theme-color pink" data-color="pink" title="Pink">
+			<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" >
+				<defs/>
+				<path fill="#fff" d="M451.648.356c-25.777 2.712-56.79 19.872-94.811 52.46-68.786 58.958-149.927 160.756-202.185 234-38.158-5.951-78.375 10.368-102.187 40.133C8.758 381.584 45.347 430.34 4.12 473.811c-7.179 7.569-4.618 20.005 4.98 24.114 67.447 28.876 153.664 10.879 194.109-31.768 24.718-26.063 38.167-64.54 31.411-100.762 72.281-55.462 172.147-140.956 228.7-211.885 31.316-39.277 47.208-70.872 48.584-96.59C513.759 22.273 486.87-3.346 451.648.356zM181.443 445.511c-27.362 28.85-87.899 45.654-141.767 31.287 30.12-48.043 4.229-91.124 36.214-131.106 26.246-32.808 79.034-41.993 109.709-11.317 35.839 35.843 19.145 86.566-4.156 111.136zm3.07-148.841c7.354-10.167 18.887-25.865 33.29-44.659l49.22 49.224c-18.125 14.906-33.263 26.86-43.077 34.494-8.842-15.879-22.526-30.108-39.433-39.059zM481.948 55.316c-3.368 63.004-143.842 186.021-191.797 226.621l-53.785-53.79c39.458-49.96 155.261-191.312 218.422-197.954 16.851-1.775 28.03 8.858 27.16 25.123z"/>
+			</svg>
+			</button>
+			<button class="theme-color navy-dark active" data-color="navy-dark" title="Navy Dark">
+			<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+				<defs/>
+				<path fill="#fff" d="M451.648.356c-25.777 2.712-56.79 19.872-94.811 52.46-68.786 58.958-149.927 160.756-202.185 234-38.158-5.951-78.375 10.368-102.187 40.133C8.758 381.584 45.347 430.34 4.12 473.811c-7.179 7.569-4.618 20.005 4.98 24.114 67.447 28.876 153.664 10.879 194.109-31.768 24.718-26.063 38.167-64.54 31.411-100.762 72.281-55.462 172.147-140.956 228.7-211.885 31.316-39.277 47.208-70.872 48.584-96.59C513.759 22.273 486.87-3.346 451.648.356zM181.443 445.511c-27.362 28.85-87.899 45.654-141.767 31.287 30.12-48.043 4.229-91.124 36.214-131.106 26.246-32.808 79.034-41.993 109.709-11.317 35.839 35.843 19.145 86.566-4.156 111.136zm3.07-148.841c7.354-10.167 18.887-25.865 33.29-44.659l49.22 49.224c-18.125 14.906-33.263 26.86-43.077 34.494-8.842-15.879-22.526-30.108-39.433-39.059zM481.948 55.316c-3.368 63.004-143.842 186.021-191.797 226.621l-53.785-53.79c39.458-49.96 155.261-191.312 218.422-197.954 16.851-1.775 28.03 8.858 27.16 25.123z"/>
+			</svg>
+			</button>
+			<button class="theme-color dark" data-color="dark" title="Dark">
+			<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+				<defs/>
+				<path fill="currentColor" d="M451.648.356c-25.777 2.712-56.79 19.872-94.811 52.46-68.786 58.958-149.927 160.756-202.185 234-38.158-5.951-78.375 10.368-102.187 40.133C8.758 381.584 45.347 430.34 4.12 473.811c-7.179 7.569-4.618 20.005 4.98 24.114 67.447 28.876 153.664 10.879 194.109-31.768 24.718-26.063 38.167-64.54 31.411-100.762 72.281-55.462 172.147-140.956 228.7-211.885 31.316-39.277 47.208-70.872 48.584-96.59C513.759 22.273 486.87-3.346 451.648.356zM181.443 445.511c-27.362 28.85-87.899 45.654-141.767 31.287 30.12-48.043 4.229-91.124 36.214-131.106 26.246-32.808 79.034-41.993 109.709-11.317 35.839 35.843 19.145 86.566-4.156 111.136zm3.07-148.841c7.354-10.167 18.887-25.865 33.29-44.659l49.22 49.224c-18.125 14.906-33.263 26.86-43.077 34.494-8.842-15.879-22.526-30.108-39.433-39.059zM481.948 55.316c-3.368 63.004-143.842 186.021-191.797 226.621l-53.785-53.79c39.458-49.96 155.261-191.312 218.422-197.954 16.851-1.775 28.03 8.858 27.16 25.123z"/>
+			</svg>
+			</button>
+		</div>
 
 		<script src="./js/script.js"></script>
 	</body>

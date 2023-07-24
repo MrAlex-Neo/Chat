@@ -1,22 +1,20 @@
-
-html {
-    height: 100%;
-  }
-
 body {
     margin:0;
     padding:0;
-    font-family: sans-serif;
 	background: var(--app-bg);
 }
 .contentBlock {
     color: white;
-    padding: 0 calc(10.6vw - 16px);
+    padding: 0 calc(20.6vw - 26px);
     padding-bottom: calc(11vw + 19px);
     padding-top: calc(5vw + 10px);
 }
 .none {
     display: none;
+}
+.flex {
+    display: flex;
+    justify-content: space-between;
 }
 .authorization {
     background: linear-gradient(#141e30, #243b55);
@@ -234,7 +232,7 @@ h1, h2, p, a, span{
 .input-container {
 	position: relative;
 }
-input[type=text]{
+.input-container input[type=text]{
     width: 100%;
     padding: 1em;
     background: var(--box-color);
@@ -242,19 +240,19 @@ input[type=text]{
     border-bottom: 1px solid var(--text-light);
     border-radius: 5px;		
 }
-input[type=text]::-webkit-input-placeholder { /* WebKit browsers */
+.input-container input[type=text]::-webkit-input-placeholder { /* WebKit browsers */
     color: #5F9EA0;	   		
 }
-input[type=text]:-moz-input-placeholder { /* Mozilla Firefox 4 to 18 */
+.input-container input[type=text]:-moz-input-placeholder { /* Mozilla Firefox 4 to 18 */
     color: #5F9EA0;	   
 }
-input[type=text]::-moz-input-placeholder { /* Mozilla Firefox 19+ */
+.input-container input[type=text]::-moz-input-placeholder { /* Mozilla Firefox 19+ */
     color: #5F9EA0;
 }
-input[type=text]:-ms-input-placeholder { /* Internet Explorer 10+ */
+.input-container input[type=text]:-ms-input-placeholder { /* Internet Explorer 10+ */
     color: #5F9EA0;	   	
 }
-input[type=text]:focus {
+.input-container input[type=text]:focus {
     outline: none; /* removes the default orange border when focus */
     border: 1px solid var(--button-bg);
 }
@@ -364,19 +362,7 @@ input[type=text]:focus {
 }
 
 
-/** MAIN CONTAINER **/
-.userProfileContainers {
-    display: flex;
-    justify-content: space-between;
-}
-.main-container {
-    /* display: flex;
-    flex-direction: column; */
-	font-family: 'Ubuntu', sans-serif;
-	/* width: 100%;
-	height: 100%;
-	margin: 6em auto; */
-}	
+/** Account **/
 	/*********************************************** HEADER ***********************************************/
 header {
     height: 80px;
@@ -427,7 +413,7 @@ header {
     display: flex;
     align-items: center;
     float: right;
-    height: 80px;
+    
     padding-right: 20px;
 }
 .profile-menu a {
@@ -438,6 +424,9 @@ header {
     padding: 10px 15px;
     cursor: pointer;
     
+}
+.userPerson .profile-menu {
+    height: 80px;
 }
 
 .profile-menu a:hover {
@@ -452,6 +441,7 @@ header {
     width: 300px;
 }
 .block {
+    width: 100%;
     margin-bottom: 25px;
     border: 1px solid var(--box-border);
     background: var(--box-color);
@@ -606,11 +596,27 @@ header {
     background: var(--button-bg);
 }
 
+/* *******************************************SETTINGS************************************** */
+.settings {
+    height: 20em;
+}
+
  /* для автозаполнения input, чтобы небыло фона */
  input:-webkit-autofill {
     transition: all 5000s ease-in-out 0s;
-  }
+}
 
+/* other  */
+.app-right .mainBtn a {
+    border: 1px solid #1a2f45;
+    border-radius: 0.5em;
+}
+.app-right .profile-menu {
+    margin-top: 1em;
+}
+.chat-input:active, :hover, :focus {
+    outline: 0;
+    outline-offset: 0;
 
-
+}
 			

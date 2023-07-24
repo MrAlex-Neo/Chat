@@ -4,11 +4,17 @@ const windowsBox = document.querySelectorAll(".contentBlock .box");
 const authorizationWindow = document.getElementById("authorizationBox");
 const registrationWindow = document.getElementById("registrationBox");
 const userWindow = document.getElementById("userPersonBox");
+
+const account = document.getElementById('account')
+const profileSettings = document.getElementById('profileSettings')
 //btns
 const autorizationBtn = document.getElementById("authorizationBnt");
 const getRegistrarionBox = document.getElementById('getRegistrarionBox')
 const registrationBtn = document.getElementById("registrationBtn");
 const getAutorizationBox = document.getElementById('getAutorizationBox')
+
+const getSettingsBox = document.getElementById('getSettingsBox')
+const getAccountBox = document.getElementById('getAccountBox')
 //inputs
 const userEmailAutorization = document.getElementById("userEmailAutorization");
 const userPasswordAutorization = document.getElementById("userPasswordAutorization");
@@ -39,6 +45,12 @@ logOut.onclick = function () {
 getRegistrarionBox.onclick = function () {
 	openProfile(registrationWindow)
 }
+getSettingsBox.onclick = function () {
+	openSettings()
+}
+getAccountBox.onclick = function () {
+	openAccount()
+}
 // getProfileUser.onclick = function() {
 // 	openProfile(userWindow)
 // 	console.log(userName.innerHTML)
@@ -67,6 +79,15 @@ function openProfile(box) {
 	}
 	box.classList.remove("none");
 }
+function openAccount() {
+	profileSettings.classList.add("none");
+	account.classList.remove("none");
+}
+function openSettings() {
+	account.classList.add("none");
+	profileSettings.classList.remove("none");
+}
+console.log(userWindow)
 
 
 const getUserDetail = () => {
