@@ -36,6 +36,9 @@ logOut.onclick = function () {
 	userPasswordAutorization.value = ''
 	getUserDetail()
 }
+getRegistrarionBox.onclick = function () {
+	openProfile(registrationWindow)
+}
 // getProfileUser.onclick = function() {
 // 	openProfile(userWindow)
 // 	console.log(userName.innerHTML)
