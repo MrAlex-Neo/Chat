@@ -30,12 +30,47 @@ const getProfileUser = document.getElementById('getProfileUser')
 const logOut = document.getElementById('logOut')
 const userNameChat = document.getElementById('userNameChat')
 const goToChat = document.getElementById('goToChat')
+const mainProfilePageName = document.getElementById('myName')
+
+
+//menuBtn
+const menuBoxBtn = document.getElementById('menuBoxBtn')
+const myNameBtn = document.getElementById('myName')
+const firendsBtn = document.getElementById('firendsBtn')
+const aboutMeBtn = document.getElementById('aboutMeBtn')
+const statisticsBtn = document.getElementById('statisticsBtn')
+
+// menuBoxes
+const menuBoxesClass = document.querySelectorAll('.menuBoxes')
+const menuBoxes = document.getElementById('menuBoxes')
+const friendsBox = document.getElementById('friendsBox')/*there is friendsList*/
+const friendsList = document.getElementById('friendsList')
+const mainPageInMenu = document.getElementById('mainPageInMenu')
+
+
+
 
 
 // listeners
 autorizationBtn.addEventListener("click", authorizationCheckUser);
 registrationBtn.addEventListener("click", registrationCheckUser);
 
+function showMeMyFriend() {
+	let elem = event.target
+	console.log('qasdqwe')
+}
+myNameBtn.onclick = function() {
+	closeMenuBoxes()
+	// friendsBox.classList.add('none')
+	mainPageInMenu.classList.remove('none')
+}
+firendsBtn.onclick = function() {
+	getAllFriends()
+	closeMenuBoxes()
+	console.log(friendsList)
+	friendsBox.classList.remove('none')
+}
+console.log(menuBoxes[0])
 logOut.onclick = function () {
 	localStorage.removeItem('user')
 	userEmailAutorization.value = ''
@@ -51,10 +86,6 @@ getSettingsBox.onclick = function () {
 getAccountBox.onclick = function () {
 	openAccount()
 }
-// getProfileUser.onclick = function() {
-// 	openProfile(userWindow)
-// 	console.log(userName.innerHTML)
-// }
 
 // functions
 function authorizationCheckUser() {
@@ -87,68 +118,32 @@ function openSettings() {
 	account.classList.add("none");
 	profileSettings.classList.remove("none");
 }
-console.log(userWindow)
+function closeMenuBoxes() {
+	for (i = 0; i < menuBoxesClass.length; i++) {
+		menuBoxesClass[i].classList.add("none");
+	}
+	// menuBoxesClass.map((box) => {
+	// 	box.classList.add('none')
+	// })
+}
 
-
+// save userName in our memory
 const getUserDetail = () => {
 	let user = JSON.parse(localStorage.getItem('user'))
-	console.log(user)
+	// console.log(user)
 	if (user) {
 		openProfile(userWindow)
 		userName.innerHTML = user.first_name
+		myNameBtn.innerHTML = user.first_name
 		userNameChat.innerHTML = user.first_name
 	} else {
 		openProfile(authorizationWindow)
 	
 	}
 }
-// goToChat.onclick = function () {
-// 	getUserDetail()
-// }
 getUserDetail()
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// document.getElementById("registrationBtn").addEventListener("click", registrationCheckUser);
-// friendsBtn.onclick = function () {
-// 	userWindow.classList.add("none");
-// 	friendsWindow.classList.remove("none");
-// };
-// registrationBtn.onclick = function () {
-// 	authorizationWindow.classList.add("none");
-// 	registrationWindow.classList.remove("none");
-// };
-// getHome.forEach((btn) => {
-// 	btn.addEventListener("click", openProfile);
-// });
-// backBtn.onclick = function () {
-// 	registrationWindow.classList.add("none");
-// 	authorizationWindow.classList.remove("none");
-// };
-// // friendsPerson.forEach((btn) => {
-// // 	btn.addEventListener("click", function () {
-// // 		let elem = event.target;
-// // 		userForChat.innerHTML = elem.innerText;
-// // 		friendsWindow.classList.add("none");
-// // 		chatWindow.classList.remove("none");
-// // 	});
-// // });
 
 
 
@@ -189,7 +184,7 @@ async function getUser(userInfo) {
 	if (response && personInfo) {
 		// userName.innerHTML = `${personInfo.first_name}`
 		openProfile(userWindow);
-		console.log(personInfo);
+		// console.log(personInfo);
 		let user = localStorage.setItem('user', JSON.stringify(personInfo))
 		getUserDetail()
 	} else {
@@ -204,6 +199,43 @@ async function addUser (userInfo) {
 		alert('mistake!');
 	}
 }
+async function getAllFriends() {
+	let friends = await sendRequest("user/", "GET", "id=all");
+	friendsList.innerHTML = ''
+	if (friends.length === 0) {
+        friendsList.innerHTML = '<p>Ты оказывается неудачник без друзей!</p>'       
+    }
+	friends.map((friend) => {
+		friendsList.insertAdjacentHTML("beforeend", friendId (friend.first_name, friend.id))
+	})
+	const userFriend = document.querySelectorAll('.userFriend')
+	return userFriend
+	// console.log(userFriend)
+}
+
+function friendId (nameFriend, id) {
+	return `
+	<li>
+		<a class="menu-box-tab userFriend" onclick="showMeMyFriend()" data-index="${id}"><span>${nameFriend}</span></a>
+	</li> `
+}
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
 	// async function regUser(userInfo) {
 	// 	let response = await sendRequest("register/", "POST", userInfo);

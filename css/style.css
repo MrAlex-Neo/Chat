@@ -486,6 +486,8 @@ header {
     border-bottom: 1px solid var(--box-border);
     -webkit-transition: background .2s;
     transition: background .2s;
+    cursor: pointer;
+    padding: 0 2em;
 }
 .menu-box-tab:hover {
     color: var(--button-text);
