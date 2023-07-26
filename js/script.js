@@ -55,12 +55,16 @@ const mainPageInMenu = document.getElementById('mainPageInMenu')
 autorizationBtn.addEventListener("click", authorizationCheckUser);
 registrationBtn.addEventListener("click", registrationCheckUser);
 
+
+
+///////////////////////////////ПРодолжение следует
+
 function showMeMyFriend() {
 	let elem = event.target
-	console.log('qasdqwe')
+	console.log(elem.dataset.index);
 }
 
-
+///////////////////////////////ПРодолжение следует
 
 myNameBtn.onclick = function() {
 	closeMenuBoxes()
@@ -214,7 +218,6 @@ async function getAllFriends() {
 	// const userFriend = document.querySelectorAll('.userFriend')
 	// console.log(userFriend)
 }
-console.log(userFriend)
 
 function friendId (nameFriend, id) {
 	return `
