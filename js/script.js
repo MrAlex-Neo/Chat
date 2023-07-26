@@ -59,6 +59,9 @@ function showMeMyFriend() {
 	let elem = event.target
 	console.log('qasdqwe')
 }
+
+
+
 myNameBtn.onclick = function() {
 	closeMenuBoxes()
 	// friendsBox.classList.add('none')
@@ -67,7 +70,7 @@ myNameBtn.onclick = function() {
 firendsBtn.onclick = function() {
 	getAllFriends()
 	closeMenuBoxes()
-	console.log(friendsList)
+	
 	friendsBox.classList.remove('none')
 }
 console.log(menuBoxes[0])
@@ -208,10 +211,10 @@ async function getAllFriends() {
 	friends.map((friend) => {
 		friendsList.insertAdjacentHTML("beforeend", friendId (friend.first_name, friend.id))
 	})
-	const userFriend = document.querySelectorAll('.userFriend')
-	return userFriend
+	// const userFriend = document.querySelectorAll('.userFriend')
 	// console.log(userFriend)
 }
+console.log(userFriend)
 
 function friendId (nameFriend, id) {
 	return `
