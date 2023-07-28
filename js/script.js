@@ -1,5 +1,7 @@
 // Registration's and Autorization's variables
 //Windows
+const contentBlock = document.getElementById('contentBlock')
+const chatContainer = document.getElementById('chatContainer')
 const windowsBox = document.querySelectorAll(".contentBlock .box");
 const authorizationWindow = document.getElementById("authorizationBox");
 const registrationWindow = document.getElementById("registrationBox");
@@ -31,6 +33,8 @@ const logOut = document.getElementById('logOut')
 const userNameChat = document.getElementById('userNameChat')
 const goToChat = document.getElementById('goToChat')
 const mainProfilePageName = document.getElementById('myName')
+const amountFriend = document.getElementById('amountFriend')
+const chatList = document.getElementById('chatList')
 
 
 //menuBtn
@@ -75,16 +79,15 @@ registrationBtn.onclick = function () {
 	addUser(userInfo);
 
 }
+getAutorizationBox.onclick = function () {
+	openProfile(authorizationWindow)
+}
+getRegistrarionBox.onclick = function () {
+	openProfile(registrationWindow)
+}
 myNameBtn.onclick = function() {
 	closeMenuBoxes()
-	// friendsBox.classList.add('none')
 	mainPageInMenu.classList.remove('none')
-}
-firendsBtn.onclick = function() {
-	getAllFriends()
-	closeMenuBoxes()
-	
-	friendsBox.classList.remove('none')
 }
 logOut.onclick = function () {
 	localStorage.removeItem('user')
@@ -92,15 +95,27 @@ logOut.onclick = function () {
 	userPasswordAutorization.value = ''
 	getUserDetail()
 }
-getRegistrarionBox.onclick = function () {
-	openProfile(registrationWindow)
-}
 getSettingsBox.onclick = function () {
 	openSettings()
 }
 getAccountBox.onclick = function () {
 	openAccount()
 }
+goToChat.onclick = () => {
+	openChat ()
+}
+getProfileUser.onclick = () => {
+	contentBlock.classList.remove('none')
+	chatContainer.classList.add('none')
+	openProfile(userWindow)
+}
+firendsBtn.onclick = function() {
+	getAllFriends()
+	closeMenuBoxes()
+	friendsBox.classList.remove('none')
+}
+
+
 
 
 
@@ -109,6 +124,46 @@ getAccountBox.onclick = function () {
 
 
 // functions
+function openChat (name){
+	contentBlock.classList.add('none')
+	chatContainer.classList.remove('none')
+	document.getElementById('friendChatName').textContent = name
+}
+
+
+function showMeMyFriend() {
+	let elem = event.target
+	openChat (elem.textContent)
+	let id = 1
+	listOfCHatMessages(id)
+
+
+
+
+
+	// console.log(elem.dataset.index);
+	// console.log(elem.textContent)
+}
+
+async function	friendChat() {
+	// let personInfo = await sendRequest("user", "GET", {'id': elem.dataset.index});
+	// console.log(document.getElementById('friendChatName').innerHTML)
+	document.getElementById('friendChatName').innerHTML = personInfo.first_name
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function openProfile(box) {
 	for (i = 0; i < windowsBox.length; i++) {
@@ -225,23 +280,51 @@ async function getAllFriends() {
 	// const userFriend = document.querySelectorAll('.userFriend')
 	// console.log(userFriend)
 }
-
-function showMeMyFriend() {
-	let elem = event.target
-	
-	console.log(elem.dataset.index);
+async function listOfCHatMessages(id) {
+	let messages = await sendRequest("chat/", "GET", {'id': id});
+	console.log(messages.messages[0].sender)
+	messages.messages.map((person) => {
+		if (person.sender == userName.innerHTML) {
+			chatList.insertAdjacentHTML("beforeend", myMessageOfChat(person.text, person.created))
+			console.log(typeof person.created)
+		} else {
+			chatList.insertAdjacentHTML("beforeend", messageOfChat(person.text, person.created))
+			console.log(typeof person.created)
+		}
+	})
 }
-async function	friendChat() {
-	let personInfo = await sendRequest("user", "GET", {'id': elem.dataset.index});
-	console.log(document.getElementById('friendChatName').innerHTML)
-	document.getElementById('friendChatName').innerHTML = personInfo.first_name
 
-}
+
 function friendId (nameFriend, id) {
 	return `
 	<li>
-		<a class="menu-box-tab userFriend" onclick="showMeMyFriend()" href="./chat.html" data-index="${id}"><span>${nameFriend}</span></a>
+		<a class="menu-box-tab userFriend" onclick="showMeMyFriend()" data-index="${id}"><span>${nameFriend}</span></a>
 	</li> `
+}
+function myMessageOfChat(message, time) {
+	return `
+	<div class="message-wrapper reverse">
+		<img class="message-pp" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80" alt="profile-pic">
+		<div class="message-box-wrapper">
+			<div class="message-box">
+			${message}
+			</div>
+			<span>${time}</span>
+		</div>
+	</div>`
+}
+
+function messageOfChat(message, time) {
+	return `
+	<div class="message-wrapper">
+		<img class="message-pp" src="https://images.unsplash.com/photo-1587080266227-677cc2a4e76e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=934&amp;q=80" alt="profile-pic">
+		<div class="message-box-wrapper">
+			<div class="message-box">
+			${message}
+			</div>
+			<span>${time}</span>
+		</div>
+	</div>`
 }
  
 

@@ -839,6 +839,9 @@ body[data-theme=dark] {
   }
 }/*# sourceMappingURL=chat.css.map */
 .aHrefGoBack {
+  cursor: pointer;
+}
+.aHrefGoBack:hover {
   text-transform: none;
   text-decoration: none;
 }

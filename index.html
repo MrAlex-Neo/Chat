@@ -14,7 +14,7 @@
 		<script src="./js/chat.js" defer></script>
 	</head>
 	<body>
-		<div class="contentBlock" id="mainBoxForDiv">
+		<div class="contentBlock" id="contentBlock">
 			<div class="authorization none box" id="authorizationBox"><!-- Autorization Window -->
 				<div class="login-box">
 					<h2>Login</h2>
@@ -48,7 +48,7 @@
 					</form>
 				  </div>
 			</div>
-			<div class="registration box" id="registrationBox"><!-- Registration Window -->
+			<div class="registration none box" id="registrationBox"><!-- Registration Window -->
 				<div class="login-box">
 					<h2>Registration</h2>
 					<form>
@@ -89,7 +89,7 @@
 					</form>
 				  </div>
 			</div>
-				<div class="userPerson none box" id="userPersonBox"><!-- Profile Window -->
+				<div class="userPerson  box" id="userPersonBox"><!-- Profile Window -->
 					<!-- HEADER -->
 					<header class="block">
 						<ul class="header-menu horizontal-list">
@@ -127,7 +127,7 @@
 											<a class="menu-box-tab" id="myName"><span >Yura Maksimus</span></a>
 										</li>
 										<li>
-											<a class="menu-box-tab" id="firendsBtn"></span>Friends<div class="menu-box-number">3</div></a>                            
+											<a class="menu-box-tab" id="firendsBtn"></span>Friends<div class="menu-box-number" id="amountFriends">5</div></a>                            
 										</li>
 										<li>
 											<a class="menu-box-tab" id="aboutMeBtn"></span>About me...</a>
@@ -186,7 +186,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="chatContainer none">
+		<div class="chatContainer none" id="chatContainer">
 			<div class="app-container">
 				<div class="app-left">
 					<div class="app-left-header">
@@ -197,7 +197,7 @@
 								<path class="path-2" fill="#3eb798" d="M320 1.108H64c-35.344 0-64 28.656-64 64v192c0 35.344 28.656 64 64 64v61.28c0 8.832 7.168 16 16 16a16 16 0 0010.4-3.84l85.6-73.44h144c35.344 0 64-28.656 64-64v-192c0-35.344-28.656-64-64-64zm-201.44 182.56a22.555 22.555 0 01-4.8 4 35.515 35.515 0 01-5.44 3.04 42.555 42.555 0 01-6.08 1.76 28.204 28.204 0 01-6.24.64c-17.68 0-32-14.32-32-32-.336-17.664 13.712-32.272 31.376-32.608 2.304-.048 4.608.16 6.864.608a42.555 42.555 0 016.08 1.76c1.936.8 3.76 1.808 5.44 3.04a27.78 27.78 0 014.8 3.84 32.028 32.028 0 019.44 23.36 31.935 31.935 0 01-9.44 22.56zm96 0a31.935 31.935 0 01-22.56 9.44c-2.08.24-4.16.24-6.24 0a42.555 42.555 0 01-6.08-1.76 35.515 35.515 0 01-5.44-3.04 29.053 29.053 0 01-4.96-4 32.006 32.006 0 01-9.28-23.2 27.13 27.13 0 010-6.24 42.555 42.555 0 011.76-6.08c.8-1.936 1.808-3.76 3.04-5.44a37.305 37.305 0 013.84-4.96 37.305 37.305 0 014.96-3.84 25.881 25.881 0 015.44-3.04 42.017 42.017 0 016.72-2.4c17.328-3.456 34.176 7.808 37.632 25.136.448 2.256.656 4.56.608 6.864 0 8.448-3.328 16.56-9.28 22.56h-.16zm96 0a22.555 22.555 0 01-4.8 4 35.515 35.515 0 01-5.44 3.04 42.555 42.555 0 01-6.08 1.76 28.204 28.204 0 01-6.24.64c-17.68 0-32-14.32-32-32-.336-17.664 13.712-32.272 31.376-32.608 2.304-.048 4.608.16 6.864.608a42.555 42.555 0 016.08 1.76c1.936.8 3.76 1.808 5.44 3.04a27.78 27.78 0 014.8 3.84 32.028 32.028 0 019.44 23.36 31.935 31.935 0 01-9.44 22.56z"/>
 							</svg>
 						</div>
-						<a href="./index.html" class="aHrefGoBack" id="getProfileUser"><h1>Go back!</h1></a>
+						<a class="aHrefGoBack" id="getProfileUser"><h1>Go back!</h1></a>
 					</div>
 					<div class="app-profile-box">
 						<img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2250&q=80" alt="profile">
@@ -221,25 +221,8 @@
 					</div>
 				</div>
 				<div class="app-main">
-				  	<div class="chat-wrapper">
-						<div class="message-wrapper reverse">
-							<img class="message-pp" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80" alt="profile-pic">
-							<div class="message-box-wrapper">
-								<div class="message-box">
-								Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur
-								</div>
-								<span>9h ago</span>
-							</div>
-						</div>
-						<div class="message-wrapper">
-							<img class="message-pp" src="https://images.unsplash.com/photo-1587080266227-677cc2a4e76e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=934&amp;q=80" alt="profile-pic">
-							<div class="message-box-wrapper">
-								<div class="message-box">
-								Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur
-								</div>
-								<span>9h ago</span>
-							</div>
-						</div>
+				  	<div class="chat-wrapper" id="chatList">
+						
 				  	</div>
 				  	<div class="chat-input-wrapper">
 						<button class="chat-attachment-btn">
@@ -269,8 +252,7 @@
 				<div class="app-right">
 				  	<div class="app-profile-box">
 						<img src="https://images.unsplash.com/photo-1587080266227-677cc2a4e76e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="profile">
-						<p class="app-profile-box-title name" id="friendChatName"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Dwight Scrute</p>
-						<p class="app-profile-box-title mail"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>dwightscrute@test.com</p>
+						<span id="friendChatName">Brodyaga</span>
 						<!-- <button class="archive-btn">Next<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-archive" viewBox="0 0 24 24">
 							<defs/>
 						</svg></button> -->
