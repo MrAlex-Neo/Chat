@@ -127,6 +127,7 @@ firendsBtn.onclick = function() {
 function openChat (name){
 	contentBlock.classList.add('none')
 	chatContainer.classList.remove('none')
+	document.getElementById('nextPersonForChat').classList.remove('none')
 	document.getElementById('friendChatName').textContent = name
 }
 
@@ -135,35 +136,9 @@ function showMeMyFriend() {
 	let elem = event.target
 	openChat (elem.textContent)
 	let id = 1
+	document.getElementById('nextPersonForChat').classList.add('none')
 	listOfCHatMessages(id)
-
-
-
-
-
-	// console.log(elem.dataset.index);
-	// console.log(elem.textContent)
 }
-
-async function	friendChat() {
-	// let personInfo = await sendRequest("user", "GET", {'id': elem.dataset.index});
-	// console.log(document.getElementById('friendChatName').innerHTML)
-	document.getElementById('friendChatName').innerHTML = personInfo.first_name
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 function openProfile(box) {
 	for (i = 0; i < windowsBox.length; i++) {
@@ -283,6 +258,7 @@ async function getAllFriends() {
 async function listOfCHatMessages(id) {
 	let messages = await sendRequest("chat/", "GET", {'id': id});
 	console.log(messages.messages[0].sender)
+	chatList.innerHTML = ''
 	messages.messages.map((person) => {
 		if (person.sender == userName.innerHTML) {
 			chatList.insertAdjacentHTML("beforeend", myMessageOfChat(person.text, person.created))
