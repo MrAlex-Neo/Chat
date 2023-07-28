@@ -30,11 +30,11 @@ themeColors.forEach(themeColor => {
   });
 });
 
-const getUserDetailForChat = () => {
-	let user = JSON.parse(localStorage.getItem('user'))
-	// console.log(user)
-	if (user) {
-		userNameChat.innerHTML = user.first_name
-	} 
-}
-getUserDetailForChat()
+// const getUserDetailForChat = () => {
+// 	let user = JSON.parse(localStorage.getItem('user'))
+// 	// console.log(user)
+// 	if (user) {
+// 		userNameChat.textContent = user.first_name
+// 	} 
+// }
+// getUserDetailForChat()

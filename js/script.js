@@ -51,21 +51,30 @@ const mainPageInMenu = document.getElementById('mainPageInMenu')
 
 
 
+
+
+
+
+
+
+
 // listeners
-autorizationBtn.addEventListener("click", authorizationCheckUser);
-registrationBtn.addEventListener("click", registrationCheckUser);
-
-
-
-///////////////////////////////ПРодолжение следует
-
-function showMeMyFriend() {
-	let elem = event.target
-	console.log(elem.dataset.index);
+autorizationBtn.onclick = function () {
+	let userInfo = {
+		email: userEmailAutorization.value,
+		password: userPasswordAutorization.value,
+	};
+	getUser(userInfo);
 }
+registrationBtn.onclick = function () {
+	let userInfo = {
+		first_name: userFirstNameRegistration.value,
+		email: userEmailRegistration.value,
+		password: userPasswordRegistration.value,
+	};
+	addUser(userInfo);
 
-///////////////////////////////ПРодолжение следует
-
+}
 myNameBtn.onclick = function() {
 	closeMenuBoxes()
 	// friendsBox.classList.add('none')
@@ -77,7 +86,6 @@ firendsBtn.onclick = function() {
 	
 	friendsBox.classList.remove('none')
 }
-console.log(menuBoxes[0])
 logOut.onclick = function () {
 	localStorage.removeItem('user')
 	userEmailAutorization.value = ''
@@ -94,23 +102,14 @@ getAccountBox.onclick = function () {
 	openAccount()
 }
 
-// functions
-function authorizationCheckUser() {
-	let userInfo = {
-		email: userEmailAutorization.value,
-		password: userPasswordAutorization.value,
-	};
-	getUser(userInfo);
-}
-function registrationCheckUser () {
-	let userInfo = {
-		first_name: userFirstNameRegistration.value,
-		email: userEmailRegistration.value,
-		password: userPasswordRegistration.value,
-	};
-	addUser(userInfo);
 
-}
+
+
+
+
+
+// functions
+
 function openProfile(box) {
 	for (i = 0; i < windowsBox.length; i++) {
 		windowsBox[i].classList.add("none");
@@ -149,6 +148,14 @@ const getUserDetail = () => {
 	}
 }
 getUserDetail()
+
+
+
+
+
+
+
+
 
 
 
@@ -219,10 +226,21 @@ async function getAllFriends() {
 	// console.log(userFriend)
 }
 
+function showMeMyFriend() {
+	let elem = event.target
+	
+	console.log(elem.dataset.index);
+}
+async function	friendChat() {
+	let personInfo = await sendRequest("user", "GET", {'id': elem.dataset.index});
+	console.log(document.getElementById('friendChatName').innerHTML)
+	document.getElementById('friendChatName').innerHTML = personInfo.first_name
+
+}
 function friendId (nameFriend, id) {
 	return `
 	<li>
-		<a class="menu-box-tab userFriend" onclick="showMeMyFriend()" data-index="${id}"><span>${nameFriend}</span></a>
+		<a class="menu-box-tab userFriend" onclick="showMeMyFriend()" href="./chat.html" data-index="${id}"><span>${nameFriend}</span></a>
 	</li> `
 }
  

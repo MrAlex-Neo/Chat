@@ -381,6 +381,7 @@ header {
     font-size: 17px;
     -webkit-transition: background .3s;
     transition: background .3s;
+    cursor: pointer;
 }
 .header-menu-tab:hover {
     color: var(--chat-box-light);
