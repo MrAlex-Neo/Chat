@@ -440,6 +440,7 @@ header {
 	/** CONTAINERS **/
 .container {
     width: 300px;
+
 }
 .block {
     width: 100%;
@@ -506,6 +507,7 @@ header {
 		/************************************************** MIDDLE CONTAINER **********************************/
 .middle-container {
     flex-basis: 40%;
+    height: 100%;
 }
 .imgUser {
     width: 150px;
@@ -579,6 +581,9 @@ header {
 }
 .profile-options .likes {
     border-top: 4px solid var(--info-box-color-4);
+}
+.aboutMeBox .block{
+    height: 300px;
 }
 			
 		/********************************************* RIGHT CONTAINER ****************************************/

@@ -7,8 +7,7 @@ const authorizationWindow = document.getElementById("authorizationBox");
 const registrationWindow = document.getElementById("registrationBox");
 const userWindow = document.getElementById("userPersonBox");
 
-const account = document.getElementById('account')
-const profileSettings = document.getElementById('profileSettings')
+
 //btns
 const autorizationBtn = document.getElementById("authorizationBnt");
 const getRegistrarionBox = document.getElementById('getRegistrarionBox')
@@ -24,17 +23,22 @@ const userPasswordAutorization = document.getElementById("userPasswordAutorizati
 const userFirstNameRegistration = document.getElementById("userFirstNameRegistration");
 const userEmailRegistration = document.getElementById("userEmailRegistration");
 const userPasswordRegistration = document.getElementById("userPasswordRegistration");
-// Registration and Autorization
+// Registration and Autorization ^^^^^^^^^^^^
 
 // Other variables
 const userName = document.getElementById('userName')
 const getProfileUser = document.getElementById('getProfileUser')
 const logOut = document.getElementById('logOut')
 const userNameChat = document.getElementById('userNameChat')
-const goToChat = document.getElementById('goToChat')
 const mainProfilePageName = document.getElementById('myName')
 const amountFriend = document.getElementById('amountFriend')
 const chatList = document.getElementById('chatList')
+
+
+// header
+const goToChat = document.getElementById('goToChat')
+const account = document.getElementById('account')
+const profileSettings = document.getElementById('profileSettings')
 
 
 //menuBtn
@@ -51,7 +55,7 @@ const mainPageInMenu = document.getElementById('mainPageInMenu')
 const friendsBox = document.getElementById('friendsBox')/*there is friendsList*/
 const friendsList = document.getElementById('friendsList')
 const statistics = document.getElementById('statistics')
-
+const aboutMeMenuBox = document.getElementById('aboutMeMenuBox')
 
 
 
@@ -85,38 +89,41 @@ getAutorizationBox.onclick = function () {    /*перехожу из окна �
 getRegistrarionBox.onclick = function () {     /*перехожу из окна авторизации в окно регистрации */
 	openProfile(registrationWindow)
 }
-myNameBtn.onclick = function() {     /* в меню открываю свой профиль*/
+myNameBtn.onclick = function() {     /*в меню открываю свой профиль*/
 	closeMenuBoxes()
 	mainPageInMenu.classList.remove('none')
 }
-logOut.onclick = function () {     /*выъхожу из аккаунта*/
-	localStorage.removeItem('user')
-	userEmailAutorization.value = ''
-	userPasswordAutorization.value = ''
-	getUserDetail()
-}
-getSettingsBox.onclick = function () {
-	openSettings()
-}
-getAccountBox.onclick = function () {
-	openAccount()
-	openMenuBox(mainPageInMenu)
-}
-goToChat.onclick = () => {
-	openChat ()
-}
-getProfileUser.onclick = () => {
-	contentBlock.classList.remove('none')
-	chatContainer.classList.add('none')
-	openProfile(userWindow)
-}
-firendsBtn.onclick = function() {
+firendsBtn.onclick = function() {     /*в меню открываю список друзей*/
 	getAllFriends()
 	openMenuBox(friendsBox)
 	// friendsBox.classList.remove('none')
 }
-statisticsBtn.onclick = () => {
+statisticsBtn.onclick = () => {     /*в меню открываю статистику*/
 	openMenuBox(statistics)
+}
+aboutMeBtn.onclick = () => {     /*в меню открываю About Me*/
+	openMenuBox(aboutMeMenuBox)
+}
+getSettingsBox.onclick = function () {    /*в хeдере открываю настройки*/
+	openSettings()
+}
+getAccountBox.onclick = function () {     /*в хeдере открываю аккаунт*/
+	openAccount()
+	openMenuBox(mainPageInMenu)
+}
+goToChat.onclick = () => {     /*в хeдере открываю чат-рандом*/
+	openChat()
+}
+getProfileUser.onclick = () => {     /*перехожу из чата в общий блок*/
+	contentBlock.classList.remove('none')
+	chatContainer.classList.add('none')
+	openProfile(userWindow)
+}
+logOut.onclick = function () {     /*выхожу из аккаунта*/
+	localStorage.removeItem('user')
+	userEmailAutorization.value = ''
+	userPasswordAutorization.value = ''
+	getUserDetail()
 }
 
 
