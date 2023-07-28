@@ -47,9 +47,10 @@ const statisticsBtn = document.getElementById('statisticsBtn')
 // menuBoxes
 const menuBoxesClass = document.querySelectorAll('.menuBoxes')
 const menuBoxes = document.getElementById('menuBoxes')
+const mainPageInMenu = document.getElementById('mainPageInMenu')
 const friendsBox = document.getElementById('friendsBox')/*there is friendsList*/
 const friendsList = document.getElementById('friendsList')
-const mainPageInMenu = document.getElementById('mainPageInMenu')
+const statistics = document.getElementById('statistics')
 
 
 
@@ -77,19 +78,18 @@ registrationBtn.onclick = function () {
 		password: userPasswordRegistration.value,
 	};
 	addUser(userInfo);
-
 }
-getAutorizationBox.onclick = function () {
+getAutorizationBox.onclick = function () {    /*перехожу из окна регистрации в окно авторизации */
 	openProfile(authorizationWindow)
 }
-getRegistrarionBox.onclick = function () {
+getRegistrarionBox.onclick = function () {     /*перехожу из окна авторизации в окно регистрации */
 	openProfile(registrationWindow)
 }
-myNameBtn.onclick = function() {
+myNameBtn.onclick = function() {     /* в меню открываю свой профиль*/
 	closeMenuBoxes()
 	mainPageInMenu.classList.remove('none')
 }
-logOut.onclick = function () {
+logOut.onclick = function () {     /*выъхожу из аккаунта*/
 	localStorage.removeItem('user')
 	userEmailAutorization.value = ''
 	userPasswordAutorization.value = ''
@@ -100,6 +100,7 @@ getSettingsBox.onclick = function () {
 }
 getAccountBox.onclick = function () {
 	openAccount()
+	openMenuBox(mainPageInMenu)
 }
 goToChat.onclick = () => {
 	openChat ()
@@ -111,12 +112,12 @@ getProfileUser.onclick = () => {
 }
 firendsBtn.onclick = function() {
 	getAllFriends()
-	closeMenuBoxes()
-	friendsBox.classList.remove('none')
+	openMenuBox(friendsBox)
+	// friendsBox.classList.remove('none')
 }
-
-
-
+statisticsBtn.onclick = () => {
+	openMenuBox(statistics)
+}
 
 
 
@@ -130,8 +131,6 @@ function openChat (name){
 	document.getElementById('nextPersonForChat').classList.remove('none')
 	document.getElementById('friendChatName').textContent = name
 }
-
-
 function showMeMyFriend() {
 	let elem = event.target
 	openChat (elem.textContent)
@@ -139,7 +138,6 @@ function showMeMyFriend() {
 	document.getElementById('nextPersonForChat').classList.add('none')
 	listOfCHatMessages(id)
 }
-
 function openProfile(box) {
 	for (i = 0; i < windowsBox.length; i++) {
 		windowsBox[i].classList.add("none");
@@ -149,6 +147,12 @@ function openProfile(box) {
 function openAccount() {
 	profileSettings.classList.add("none");
 	account.classList.remove("none");
+}
+function openMenuBox(box) {
+	for (i = 0; i < menuBoxesClass.length; i++) {
+		menuBoxesClass[i].classList.add("none");
+	}
+	box.classList.remove("none");
 }
 function openSettings() {
 	account.classList.add("none");
